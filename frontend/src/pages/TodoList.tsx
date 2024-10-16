@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import TodoItem from '../components/TodoItem';
 import { DefaultService, TodoRead } from '../client';
+import AddTodoForm from '@/components/AddTodoForm';
 
 const TodoList: React.FC = () => {
   const [todos, setTodos] = useState<TodoRead[]>([]);
-
-  useEffect(() => {
+  const getTodos = ()=>{
     DefaultService.listAllTodosApiV1TodosGet()
       .then(setTodos)
       .catch(console.error);
+  }
+  useEffect(() => {
+    getTodos()
   }, []);
 
   const handleToggle = (id: number) => {
@@ -41,17 +44,20 @@ const TodoList: React.FC = () => {
   };
 
   return (
-    <div className="todo-list">
-      <h1>To-Do List</h1>
-      {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          onToggle={handleToggle}
-          onDelete={handleDelete}
-        />
-      ))}
-    </div>
+    <>
+      <AddTodoForm onAdd={getTodos} />
+      <div className="todo-list">
+        <h1>To-Do List</h1>
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onToggle={handleToggle}
+            onDelete={handleDelete}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 

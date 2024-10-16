@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { DefaultService, TodoCreate } from '../client';
-
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 interface AddTodoFormProps {
   onAdd: (newTodo: TodoCreate) => void;
 }
@@ -23,20 +25,26 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
-      />
-      <textarea
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <button type="submit">Add Todo</button>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <Input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+          className="w-full"
+        />
+      </div>
+      <div>
+        <Textarea
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-full"
+        />
+      </div>
+      <Button type="submit" className="w-full">Add Todo</Button>
     </form>
   );
 };
