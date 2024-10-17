@@ -1,50 +1,42 @@
 import React, { useState } from 'react';
-import { DefaultService, TodoCreate } from '../client';
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { DefaultService } from '../client';
+
 interface AddTodoFormProps {
-  onAdd: (newTodo: TodoCreate) => void;
+  onAdd: () => void;
 }
 
 const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd }) => {
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!title.trim()) return;
 
-    const newTodo: TodoCreate = {
-      title,
-      description,
-    };
-
-    DefaultService.createTodoApiV1TodosPost({ requestBody: newTodo })
-      .then(onAdd)
+    DefaultService.createTodoApiV1TodosPost({ requestBody: { title } })
+      .then(() => {
+        setTitle('');
+        onAdd();
+      })
       .catch(console.error);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <Input
+    <form onSubmit={handleSubmit} className="mt-4">
+      <div className="flex items-center">
+        <input
           type="text"
-          placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          required
-          className="w-full"
+          placeholder="Add a new todo..."
+          className="flex-grow px-4 py-2 text-gray-700 bg-gray-100 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300 ease-in-out"
         />
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300 ease-in-out"
+        >
+          Add
+        </button>
       </div>
-      <div>
-        <Textarea
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="w-full"
-        />
-      </div>
-      <Button type="submit" className="w-full">Add Todo</Button>
     </form>
   );
 };
