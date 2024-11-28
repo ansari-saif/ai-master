@@ -49,7 +49,7 @@ def write_response_to_file(response):
     # The response should contain directory path and content. Example: "Directory: /path/to/folder FileName: output.txt Content: <content>"
     try:
         # Extract directory, filename, and content from response
-        data_list = json.loads(response.strip("```"))
+        data_list = json.loads(response.strip("```json").strip("```"))
         for file in data_list:
             file_path = file["file_path"]
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
