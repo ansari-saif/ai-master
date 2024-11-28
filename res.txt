@@ -1,0 +1,71 @@
+```dir/app.py
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+todos = []
+
+@app.route('/todos', methods=['GET'])
+def get_todos():
+    return jsonify(todos)
+
+@app.route('/todos', methods=['POST'])
+def add_todo():
+    todo = request.json.get('todo')
+    if todo:
+        todos.append({'id': len(todos) + 1, 'task': todo, 'completed': False})
+        return jsonify({'message': 'Todo added successfully'}), 201
+    return jsonify({'error': 'Invalid input'}), 400
+
+@app.route('/todos/<int:todo_id>', methods=['PUT'])
+def update_todo(todo_id):
+    for todo in todos:
+        if todo['id'] == todo_id:
+            todo['completed'] = request.json.get('completed', todo['completed'])
+            return jsonify({'message': 'Todo updated successfully'})
+    return jsonify({'error': 'Todo not found'}), 404
+
+@app.route('/todos/<int:todo_id>', methods=['DELETE'])
+def delete_todo(todo_id):
+    global todos
+    todos = [todo for todo in todos if todo['id'] != todo_id]
+    return jsonify({'message': 'Todo deleted successfully'})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+```dir/requirements.txt
+Flask==2.2.5
+```
+
+```dir/.gitignore
+__pycache__/
+*.pyc
+instance/
+.env
+```
+
+```dir/README.md
+# Todo App
+
+A simple Flask-based Todo application.
+
+## Setup
+
+1. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+
+2. Run the application:
+   ```
+   python app.py
+   ```
+
+3. Access the app at `http://127.0.0.1:5000/`
+```
+
+```dir/.env
+FLASK_ENV=development
+```
