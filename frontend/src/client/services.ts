@@ -4,7 +4,7 @@ import { request as __request } from "./core/request";
 
 import type { TodoCreate, TodoRead, TodoUpdateSchema } from "./models";
 
-export type DefaultData = {
+export type TodosData = {
 	CreateTodoApiV1TodosPost: {
 		requestBody: TodoCreate;
 	};
@@ -20,7 +20,7 @@ export type DefaultData = {
 	};
 };
 
-export class DefaultService {
+export class TodosService {
 	/**
 	 * List All Todos
 	 * @returns TodoRead Successful Response
@@ -41,7 +41,7 @@ export class DefaultService {
 	 * @throws ApiError
 	 */
 	public static createTodoApiV1TodosPost(
-		data: DefaultData["CreateTodoApiV1TodosPost"],
+		data: TodosData["CreateTodoApiV1TodosPost"],
 	): CancelablePromise<TodoRead> {
 		const { requestBody } = data;
 		return __request(OpenAPI, {
@@ -61,7 +61,7 @@ export class DefaultService {
 	 * @throws ApiError
 	 */
 	public static getTodoApiV1TodosTodoIdGet(
-		data: DefaultData["GetTodoApiV1TodosTodoIdGet"],
+		data: TodosData["GetTodoApiV1TodosTodoIdGet"],
 	): CancelablePromise<TodoRead> {
 		const { todoId } = data;
 		return __request(OpenAPI, {
@@ -82,7 +82,7 @@ export class DefaultService {
 	 * @throws ApiError
 	 */
 	public static updateTodoApiV1TodosTodoIdPut(
-		data: DefaultData["UpdateTodoApiV1TodosTodoIdPut"],
+		data: TodosData["UpdateTodoApiV1TodosTodoIdPut"],
 	): CancelablePromise<TodoRead> {
 		const { todoId, requestBody } = data;
 		return __request(OpenAPI, {
@@ -105,7 +105,7 @@ export class DefaultService {
 	 * @throws ApiError
 	 */
 	public static deleteTodoApiV1TodosTodoIdDelete(
-		data: DefaultData["DeleteTodoApiV1TodosTodoIdDelete"],
+		data: TodosData["DeleteTodoApiV1TodosTodoIdDelete"],
 	): CancelablePromise<Record<string, unknown>> {
 		const { todoId } = data;
 		return __request(OpenAPI, {
