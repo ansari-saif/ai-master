@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/api/v1/todos/": {
+    "/api/v1/todo/": {
       "get": {
         "tags": [
-          "todos"
+          "todo"
         ],
-        "summary": "List All Todos",
-        "operationId": "list_all_todos_api_v1_todos__get",
+        "summary": "List All Todo",
+        "operationId": "list_all_todo_api_v1_todo__get",
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -28,7 +28,7 @@
                     "$ref": "#/components/schemas/TodoRead"
                   },
                   "type": "array",
-                  "title": "Response List All Todos Api V1 Todos  Get"
+                  "title": "Response List All Todo Api V1 Todo  Get"
                 }
               }
             }
@@ -37,10 +37,10 @@
       },
       "post": {
         "tags": [
-          "todos"
+          "todo"
         ],
         "summary": "Create Todo",
-        "operationId": "create_todo_api_v1_todos__post",
+        "operationId": "create_todo_api_v1_todo__post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -65,13 +65,13 @@
         }
       }
     },
-    "/api/v1/todos/{todo_id}": {
+    "/api/v1/todo/{todo_id}": {
       "get": {
         "tags": [
-          "todos"
+          "todo"
         ],
         "summary": "Get Todo",
-        "operationId": "get_todo_api_v1_todos__todo_id__get",
+        "operationId": "get_todo_api_v1_todo__todo_id__get",
         "parameters": [
           {
             "name": "todo_id",
@@ -98,10 +98,10 @@
       },
       "put": {
         "tags": [
-          "todos"
+          "todo"
         ],
         "summary": "Update Todo",
-        "operationId": "update_todo_api_v1_todos__todo_id__put",
+        "operationId": "update_todo_api_v1_todo__todo_id__put",
         "parameters": [
           {
             "name": "todo_id",
@@ -138,10 +138,10 @@
       },
       "delete": {
         "tags": [
-          "todos"
+          "todo"
         ],
         "summary": "Delete Todo",
-        "operationId": "delete_todo_api_v1_todos__todo_id__delete",
+        "operationId": "delete_todo_api_v1_todo__todo_id__delete",
         "parameters": [
           {
             "name": "todo_id",
@@ -160,7 +160,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "Response Delete Todo Api V1 Todos  Todo Id  Delete"
+                  "title": "Response Delete Todo Api V1 Todo  Todo Id  Delete"
                 }
               }
             }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DefaultService } from '../client';
+import { TodoService } from '../client';
 
 interface AddTodoFormProps {
   onAdd: () => void;
@@ -12,7 +12,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd }) => {
     e.preventDefault();
     if (!title.trim()) return;
 
-    DefaultService.createTodoApiV1TodosPost({ requestBody: { title } })
+    TodoService.createTodoApiV1TodoPost({ requestBody: { title } })
       .then(() => {
         setTitle('');
         onAdd();

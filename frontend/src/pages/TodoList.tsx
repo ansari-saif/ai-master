@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import TodoItem from '../components/TodoItem';
-import { DefaultService, TodoRead } from '../client';
+import { TodoService, TodoRead } from '../client';
 import AddTodoForm from '@/components/AddTodoForm';
 import { motion } from 'framer-motion';
 
 const TodoList: React.FC = () => {
-  const [todos, setTodos] = useState<TodoRead[]>([]);
-  const getTodos = ()=>{
-    DefaultService.listAllTodosApiV1TodosGet()
-      .then(setTodos)
+  const [todos, setTodo] = useState<TodoRead[]>([]);
+  const getTodo = ()=>{
+    TodoService.listAllTodoApiV1TodoGet()
+      .then(setTodo)
       .catch(console.error);
   }
   useEffect(() => {
-    getTodos()
+    getTodo()
   }, []);
 
   const handleToggle = (id: number) => {
@@ -24,12 +24,12 @@ const TodoList: React.FC = () => {
       is_completed: !todo.is_completed,
     };
 
-    DefaultService.updateTodoApiV1TodosTodoIdPut({
+    TodoService.updateTodoApiV1TodoTodoIdPut({
       todoId: id,
       requestBody: updatedTodo,
     })
       .then((updated) => {
-        setTodos((prev) =>
+        setTodo((prev) =>
           prev.map((t) => (t.id === id ? updated : t))
         );
       })
@@ -37,9 +37,9 @@ const TodoList: React.FC = () => {
   };
 
   const handleDelete = (id: number) => {
-    DefaultService.deleteTodoApiV1TodosTodoIdDelete({ todoId: id })
+    TodoService.deleteTodoApiV1TodoTodoIdDelete({ todoId: id })
       .then(() => {
-        setTodos((prev) => prev.filter((t) => t.id !== id));
+        setTodo((prev) => prev.filter((t) => t.id !== id));
       })
       .catch(console.error);
   };
@@ -54,7 +54,7 @@ const TodoList: React.FC = () => {
       >
         <div className="p-6">
           <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">To-Do List</h1>
-          <AddTodoForm onAdd={getTodos} />
+          <AddTodoForm onAdd={getTodo} />
           <div className="mt-6 space-y-4">
             {todos.map((todo) => (
               <motion.div
