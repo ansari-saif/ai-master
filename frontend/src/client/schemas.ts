@@ -1,128 +1,65 @@
-export const $HTTPValidationError = {
+export const $Patient_managementCreate = {
 	properties: {
-		detail: {
-			type: "array",
-			contains: {
-				type: "ValidationError",
-			},
-		},
+		contact_information: {
+	type: 'string',
+	isRequired: true,
+},
 	},
 } as const;
 
-export const $TodoCreate = {
-	properties: {
-		title: {
-			type: "string",
-			isRequired: true,
-		},
-		description: {
-			type: "any-of",
-			contains: [
-				{
-					type: "string",
-				},
-				{
-					type: "null",
-				},
-			],
-		},
-		is_completed: {
-			type: "boolean",
-			default: false,
-		},
-	},
-} as const;
-
-export const $TodoRead = {
+export const $Patient_managementRead = {
 	properties: {
 		id: {
-			type: "number",
-			isRequired: true,
-		},
-		title: {
-			type: "string",
-			isRequired: true,
-		},
-		description: {
-			type: "any-of",
-			contains: [
-				{
-					type: "string",
-				},
-				{
-					type: "null",
-				},
-			],
-		},
-		is_completed: {
-			type: "boolean",
-			isRequired: true,
-		},
+	type: 'number',
+	isRequired: true,
+},
+		contact_information: {
+	type: 'string',
+	isRequired: true,
+},
 	},
 } as const;
 
-export const $TodoUpdateSchema = {
+export const $Doctor_managementCreate = {
 	properties: {
-		title: {
-			type: "any-of",
-			contains: [
-				{
-					type: "string",
-				},
-				{
-					type: "null",
-				},
-			],
-		},
-		description: {
-			type: "any-of",
-			contains: [
-				{
-					type: "string",
-				},
-				{
-					type: "null",
-				},
-			],
-		},
-		is_completed: {
-			type: "any-of",
-			contains: [
-				{
-					type: "boolean",
-				},
-				{
-					type: "null",
-				},
-			],
-		},
+		contact_information: {
+	type: 'string',
+	isRequired: true,
+},
 	},
 } as const;
 
-export const $ValidationError = {
+export const $Doctor_managementRead = {
 	properties: {
-		loc: {
-			type: "array",
-			contains: {
-				type: "any-of",
-				contains: [
-					{
-						type: "string",
-					},
-					{
-						type: "number",
-					},
-				],
-			},
-			isRequired: true,
-		},
-		msg: {
-			type: "string",
-			isRequired: true,
-		},
-		type: {
-			type: "string",
-			isRequired: true,
-		},
+		id: {
+	type: 'number',
+	isRequired: true,
+},
+		contact_information: {
+	type: 'string',
+	isRequired: true,
+},
+	},
+} as const;
+
+export const $Asset_managementCreate = {
+	properties: {
+		location: {
+	type: 'string',
+	isRequired: true,
+},
+	},
+} as const;
+
+export const $Asset_managementRead = {
+	properties: {
+		id: {
+	type: 'number',
+	isRequired: true,
+},
+		location: {
+	type: 'string',
+	isRequired: true,
+},
 	},
 } as const;

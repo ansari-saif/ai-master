@@ -1,28 +1,37 @@
-export type HTTPValidationError = {
-	detail?: Array<ValidationError>;
+export type Patient_managementCreate = {
+	contact_information: string;
 };
 
-export type TodoCreate = {
-	title: string;
-	description?: string | null;
-	is_completed?: boolean;
-};
 
-export type TodoRead = {
+
+export type Patient_managementRead = {
 	id: number;
-	title: string;
-	description?: string | null;
-	is_completed: boolean;
+	contact_information: string;
 };
 
-export type TodoUpdateSchema = {
-	title?: string | null;
-	description?: string | null;
-	is_completed?: boolean | null;
+
+
+export type Doctor_managementCreate = {
+	contact_information: string;
 };
 
-export type ValidationError = {
-	loc: Array<string | number>;
-	msg: string;
-	type: string;
+
+
+export type Doctor_managementRead = {
+	id: number;
+	contact_information: string;
 };
+
+
+
+export type Asset_managementCreate = {
+	location: string;
+};
+
+
+
+export type Asset_managementRead = {
+	id: number;
+	location: string;
+};
+

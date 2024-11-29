@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/api/v1/todos/": {
+    "/api/v1/patient_management/": {
       "get": {
         "tags": [
-          "todos"
+          "patient_management"
         ],
-        "summary": "List All Todos",
-        "operationId": "list_all_todos_api_v1_todos__get",
+        "summary": "List All Patient_management",
+        "operationId": "list_all_patient_management_api_v1_patient_management__get",
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -25,10 +25,10 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "$ref": "#/components/schemas/TodoRead"
+                    "$ref": "#/components/schemas/Patient_managementRead"
                   },
                   "type": "array",
-                  "title": "Response List All Todos Api V1 Todos  Get"
+                  "title": "Response List All Patient_management Api V1 patient_management  Get"
                 }
               }
             }
@@ -37,15 +37,15 @@
       },
       "post": {
         "tags": [
-          "todos"
+          "patient_management"
         ],
-        "summary": "Create Todo",
-        "operationId": "create_todo_api_v1_todos__post",
+        "summary": "Create Patient_management",
+        "operationId": "create_patient_management_api_v1_patient_management__post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TodoCreate"
+                "$ref": "#/components/schemas/Patient_managementCreate"
               }
             }
           },
@@ -57,73 +57,53 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TodoRead"
+                  "$ref": "#/components/schemas/Patient_managementRead"
                 }
               }
             }
           }
-        
         }
       }
     },
-    "/api/v1/todos/{todo_id}": {
+    "/api/v1/doctor_management/": {
       "get": {
         "tags": [
-          "todos"
+          "doctor_management"
         ],
-        "summary": "Get Todo",
-        "operationId": "get_todo_api_v1_todos__todo_id__get",
-        "parameters": [
-          {
-            "name": "todo_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Todo Id"
-            }
-          }
-        ],
+        "summary": "List All Doctor_management",
+        "operationId": "list_all_doctor_management_api_v1_doctor_management__get",
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TodoRead"
+                  "items": {
+                    "$ref": "#/components/schemas/Doctor_managementRead"
+                  },
+                  "type": "array",
+                  "title": "Response List All Doctor_management Api V1 doctor_management  Get"
                 }
               }
             }
           }
-         
         }
       },
-      "put": {
+      "post": {
         "tags": [
-          "todos"
+          "doctor_management"
         ],
-        "summary": "Update Todo",
-        "operationId": "update_todo_api_v1_todos__todo_id__put",
-        "parameters": [
-          {
-            "name": "todo_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Todo Id"
-            }
-          }
-        ],
+        "summary": "Create Doctor_management",
+        "operationId": "create_doctor_management_api_v1_doctor_management__post",
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TodoUpdateSchema"
+                "$ref": "#/components/schemas/Doctor_managementCreate"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -131,38 +111,61 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TodoRead"
+                  "$ref": "#/components/schemas/Doctor_managementRead"
                 }
               }
             }
           }
         }
-      },
-      "delete": {
+      }
+    },
+    "/api/v1/asset_management/": {
+      "get": {
         "tags": [
-          "todos"
+          "asset_management"
         ],
-        "summary": "Delete Todo",
-        "operationId": "delete_todo_api_v1_todos__todo_id__delete",
-        "parameters": [
-          {
-            "name": "todo_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Todo Id"
-            }
-          }
-        ],
+        "summary": "List All Asset_management",
+        "operationId": "list_all_asset_management_api_v1_asset_management__get",
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "title": "Response Delete Todo Api V1 Todos  Todo Id  Delete"
+                  "items": {
+                    "$ref": "#/components/schemas/Asset_managementRead"
+                  },
+                  "type": "array",
+                  "title": "Response List All Asset_management Api V1 asset_management  Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "asset_management"
+        ],
+        "summary": "Create Asset_management",
+        "operationId": "create_asset_management_api_v1_asset_management__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asset_managementCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Asset_managementRead"
                 }
               }
             }
@@ -173,140 +176,98 @@
   },
   "components": {
     "schemas": {
-      "TodoCreate": {
+      "Patient_managementCreate": {
         "properties": {
-          "title": {
+          "contact_information": {
             "type": "string",
-            "title": "Title"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description"
-          },
-          "is_completed": {
-            "type": "boolean",
-            "title": "Is Completed",
-            "default": false
+            "title": "Contact_information"
           }
         },
         "type": "object",
         "required": [
-          "title"
+          "contact_information"
         ],
-        "title": "TodoCreate"
+        "title": "Patient_managementCreate"
       },
-      "TodoRead": {
+      "Patient_managementRead": {
         "properties": {
           "id": {
             "type": "integer",
             "title": "Id"
           },
-          "title": {
+          "contact_information": {
             "type": "string",
-            "title": "Title"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description"
-          },
-          "is_completed": {
-            "type": "boolean",
-            "title": "Is Completed"
+            "title": "Contact_information"
           }
         },
         "type": "object",
         "required": [
           "id",
-          "title",
-          "is_completed"
+          "contact_information"
         ],
-        "title": "TodoRead"
+        "title": "Patient_managementRead"
       },
-      "TodoUpdateSchema": {
+      "Doctor_managementCreate": {
         "properties": {
-          "title": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Title"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description"
-          },
-          "is_completed": {
-            "anyOf": [
-              {
-                "type": "boolean"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Is Completed"
-          }
-        },
-        "type": "object",
-        "title": "TodoUpdateSchema"
-      },
-      "ValidationError": {
-        "properties": {
-          "loc": {
-            "items": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "integer"
-                }
-              ]
-            },
-            "type": "array",
-            "title": "Location"
-          },
-          "msg": {
+          "contact_information": {
             "type": "string",
-            "title": "Message"
-          },
-          "type": {
-            "type": "string",
-            "title": "Error Type"
+            "title": "Contact_information"
           }
         },
         "type": "object",
         "required": [
-          "loc",
-          "msg",
-          "type"
+          "contact_information"
         ],
-        "title": "ValidationError"
+        "title": "Doctor_managementCreate"
+      },
+      "Doctor_managementRead": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "contact_information": {
+            "type": "string",
+            "title": "Contact_information"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "contact_information"
+        ],
+        "title": "Doctor_managementRead"
+      },
+      "Asset_managementCreate": {
+        "properties": {
+          "location": {
+            "type": "string",
+            "title": "Location"
+          }
+        },
+        "type": "object",
+        "required": [
+          "location"
+        ],
+        "title": "Asset_managementCreate"
+      },
+      "Asset_managementRead": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "location": {
+            "type": "string",
+            "title": "Location"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "location"
+        ],
+        "title": "Asset_managementRead"
       }
     }
   }
