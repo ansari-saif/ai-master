@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.v1.routes.todos import router as todo_router
+from backend.app.api.v1.routes.todo import router as todo_router
 from app.core.database import engine
 from app.models.todo import SQLModel
 from fastapi.middleware.cors import CORSMiddleware
