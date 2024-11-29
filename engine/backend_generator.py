@@ -58,6 +58,7 @@ def get_ai_response(json_data):
             "|   Dockerfile\n"
             "|   test.db\n"
             "\"\"\"\n"
+            "you've to follow current code structure and you've to create models, schema, services and routes \n\n"
             "here is one sample\n"
             "backend/app/api/v1/routes/todo.py\n\n"
             "```\n"
@@ -174,7 +175,8 @@ def get_ai_response(json_data):
             "def list_all_todo_service(session: Session):\n"
             "    todo = session.exec(select(Todo)).all()\n"
             "    return todo\n"
-            "```\n"            
+            "```\n"
+            
         )
                         }
                     ]
@@ -185,12 +187,13 @@ def get_ai_response(json_data):
                 "type": "text"
             },
             temperature=0,
-            max_tokens=5000,
+            max_tokens=2048,
         )
         # Extracts the response text
         return response.choices[0].message.content.strip()
     except Exception as e:
         return f"Error fetching response: {str(e)}"
+
 
 def get_ai_response2(json_item):
     module = json_item["module"]
@@ -264,10 +267,8 @@ def main():
         json_data = json.loads(file.read())
         for json_item in json_data:
             response = get_ai_response(json_item)
-            # Write response content to appropriate directory/file
             result = write_response_to_file(response)
             response = get_ai_response2(json_item)
-            # Write response content to appropriate directory/file
             result = write_response_to_file(response)
             print(json_item["module"], "done")
 
