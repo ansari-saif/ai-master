@@ -1,58 +1,21 @@
-
-[
-    {
-        "module": "patient_management",
-        "fields": [
-            {
-                "name": "name",
-                "type": "string"
-            },
-            {
-                "name": "age",
-                "type": "integer"
-            },
-            {
-                "name": "gender",
-                "type": "string"
-            },
-            {
-                "name": "contact_information",
-                "type": "string"
-            }
-        ]
-    },
-    {
-        "module": "doctor_management",
-        "fields": [
-            {
-                "name": "name",
-                "type": "string"
-            },
-            {
-                "name": "specialty",
-                "type": "string"
-            },
-            {
-                "name": "contact_information",
-                "type": "string"
-            }
-        ]
-    },
-    {
-        "module": "asset_management",
-        "fields": [
-            {
-                "name": "asset_name",
-                "type": "string"
-            },
-            {
-                "name": "quantity",
-                "type": "integer"
-            },
-            {
-                "name": "location",
-                "type": "string"
-            }
-        ]
-    }
-]
+{
+    "module": "patient",
+    "fields": [
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "age",
+            "type": "integer"
+        },
+        {
+            "name": "gender",
+            "type": "string"
+        },
+        {
+            "name": "contact_information",
+            "type": "string"
+        }
+    ]
+}
