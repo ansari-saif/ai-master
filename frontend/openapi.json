@@ -178,6 +178,18 @@
     "schemas": {
       "Patient_managementCreate": {
         "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "age": {
+            "type": "integer",
+            "title": "Age"
+          },
+          "gender": {
+            "type": "string",
+            "title": "Gender"
+          },
           "contact_information": {
             "type": "string",
             "title": "Contact_information"
@@ -185,6 +197,9 @@
         },
         "type": "object",
         "required": [
+          "name",
+          "age",
+          "gender",
           "contact_information"
         ],
         "title": "Patient_managementCreate"
@@ -195,6 +210,18 @@
             "type": "integer",
             "title": "Id"
           },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "age": {
+            "type": "integer",
+            "title": "Age"
+          },
+          "gender": {
+            "type": "string",
+            "title": "Gender"
+          },
           "contact_information": {
             "type": "string",
             "title": "Contact_information"
@@ -203,12 +230,23 @@
         "type": "object",
         "required": [
           "id",
+          "name",
+          "age",
+          "gender",
           "contact_information"
         ],
         "title": "Patient_managementRead"
       },
       "Doctor_managementCreate": {
         "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "specialty": {
+            "type": "string",
+            "title": "Specialty"
+          },
           "contact_information": {
             "type": "string",
             "title": "Contact_information"
@@ -216,6 +254,8 @@
         },
         "type": "object",
         "required": [
+          "name",
+          "specialty",
           "contact_information"
         ],
         "title": "Doctor_managementCreate"
@@ -226,6 +266,14 @@
             "type": "integer",
             "title": "Id"
           },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "specialty": {
+            "type": "string",
+            "title": "Specialty"
+          },
           "contact_information": {
             "type": "string",
             "title": "Contact_information"
@@ -234,12 +282,22 @@
         "type": "object",
         "required": [
           "id",
+          "name",
+          "specialty",
           "contact_information"
         ],
         "title": "Doctor_managementRead"
       },
       "Asset_managementCreate": {
         "properties": {
+          "asset_name": {
+            "type": "string",
+            "title": "Asset_name"
+          },
+          "quantity": {
+            "type": "integer",
+            "title": "Quantity"
+          },
           "location": {
             "type": "string",
             "title": "Location"
@@ -247,6 +305,8 @@
         },
         "type": "object",
         "required": [
+          "asset_name",
+          "quantity",
           "location"
         ],
         "title": "Asset_managementCreate"
@@ -257,6 +317,14 @@
             "type": "integer",
             "title": "Id"
           },
+          "asset_name": {
+            "type": "string",
+            "title": "Asset_name"
+          },
+          "quantity": {
+            "type": "integer",
+            "title": "Quantity"
+          },
           "location": {
             "type": "string",
             "title": "Location"
@@ -265,6 +333,8 @@
         "type": "object",
         "required": [
           "id",
+          "asset_name",
+          "quantity",
           "location"
         ],
         "title": "Asset_managementRead"

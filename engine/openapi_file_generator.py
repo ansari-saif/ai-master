@@ -82,39 +82,47 @@ for module in modules:
         }
     }
 
-    # Create schemas for each module
+    # Initialize schemas for Create and Read
+    create_schema = {
+        "properties": {},
+        "type": "object",
+        "required": [],
+        "title": f"{module_name.capitalize()}Create"
+    }
+    read_schema = {
+        "properties": {
+            "id": {
+                "type": "integer",
+                "title": "Id"
+            }
+        },
+        "type": "object",
+        "required": ["id"],
+        "title": f"{module_name.capitalize()}Read"
+    }
+
+    # Add fields to the schemas
     for field in module["fields"]:
         field_name = field["name"]
         field_type = field["type"]
 
-        # Schema for Create and Read
-        openapi_structure["components"]["schemas"][f"{module_name.capitalize()}Create"] = {
-            "properties": {
-                field_name: {
-                    "type": field_type,
-                    "title": field_name.capitalize()
-                }
-            },
-            "type": "object",
-            "required": [field_name],
-            "title": f"{module_name.capitalize()}Create"
+        # Update Create schema
+        create_schema["properties"][field_name] = {
+            "type": field_type,
+            "title": field_name.capitalize()
         }
+        create_schema["required"].append(field_name)
 
-        openapi_structure["components"]["schemas"][f"{module_name.capitalize()}Read"] = {
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "title": "Id"
-                },
-                field_name: {
-                    "type": field_type,
-                    "title": field_name.capitalize()
-                }
-            },
-            "type": "object",
-            "required": ["id", field_name],
-            "title": f"{module_name.capitalize()}Read"
+        # Update Read schema
+        read_schema["properties"][field_name] = {
+            "type": field_type,
+            "title": field_name.capitalize()
         }
+        read_schema["required"].append(field_name)
+
+    # Add schemas to components
+    openapi_structure["components"]["schemas"][f"{module_name.capitalize()}Create"] = create_schema
+    openapi_structure["components"]["schemas"][f"{module_name.capitalize()}Read"] = read_schema
 
 # Print the converted OpenAPI structure as a JSON string
 with open("frontend/openapi.json", "w") as file:

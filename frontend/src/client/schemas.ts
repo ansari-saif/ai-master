@@ -1,5 +1,17 @@
 export const $Patient_managementCreate = {
 	properties: {
+		name: {
+	type: 'string',
+	isRequired: true,
+},
+		age: {
+	type: 'number',
+	isRequired: true,
+},
+		gender: {
+	type: 'string',
+	isRequired: true,
+},
 		contact_information: {
 	type: 'string',
 	isRequired: true,
@@ -13,6 +25,18 @@ export const $Patient_managementRead = {
 	type: 'number',
 	isRequired: true,
 },
+		name: {
+	type: 'string',
+	isRequired: true,
+},
+		age: {
+	type: 'number',
+	isRequired: true,
+},
+		gender: {
+	type: 'string',
+	isRequired: true,
+},
 		contact_information: {
 	type: 'string',
 	isRequired: true,
@@ -22,6 +46,14 @@ export const $Patient_managementRead = {
 
 export const $Doctor_managementCreate = {
 	properties: {
+		name: {
+	type: 'string',
+	isRequired: true,
+},
+		specialty: {
+	type: 'string',
+	isRequired: true,
+},
 		contact_information: {
 	type: 'string',
 	isRequired: true,
@@ -35,6 +67,14 @@ export const $Doctor_managementRead = {
 	type: 'number',
 	isRequired: true,
 },
+		name: {
+	type: 'string',
+	isRequired: true,
+},
+		specialty: {
+	type: 'string',
+	isRequired: true,
+},
 		contact_information: {
 	type: 'string',
 	isRequired: true,
@@ -44,6 +84,14 @@ export const $Doctor_managementRead = {
 
 export const $Asset_managementCreate = {
 	properties: {
+		asset_name: {
+	type: 'string',
+	isRequired: true,
+},
+		quantity: {
+	type: 'number',
+	isRequired: true,
+},
 		location: {
 	type: 'string',
 	isRequired: true,
@@ -54,6 +102,14 @@ export const $Asset_managementCreate = {
 export const $Asset_managementRead = {
 	properties: {
 		id: {
+	type: 'number',
+	isRequired: true,
+},
+		asset_name: {
+	type: 'string',
+	isRequired: true,
+},
+		quantity: {
 	type: 'number',
 	isRequired: true,
 },
