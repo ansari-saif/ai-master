@@ -10,9 +10,6 @@ client = OpenAI(api_key="sk-proj-FGTYPkzhFeKLJNHEvM_Yxp2GMXwWQgxH-tiTX3h1KubsfUM
 def get_ai_response(json_data):
     """Function to get a response from the AI."""
     try:
-        main_file_path = 'backend/app/main.py'
-        with open(main_file_path, 'r') as file:
-            main_file_content = file.read()
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -61,7 +58,6 @@ def get_ai_response(json_data):
             "|   Dockerfile\n"
             "|   test.db\n"
             "\"\"\"\n"
-            "you've to follow current code structure and you've to create models, schema, services and routes \n\n"
             "here is one sample\n"
             "backend/app/api/v1/routes/todo.py\n\n"
             "```\n"
@@ -178,7 +174,51 @@ def get_ai_response(json_data):
             "def list_all_todo_service(session: Session):\n"
             "    todo = session.exec(select(Todo)).all()\n"
             "    return todo\n"
-            "```\n"
+            "```\n"            
+        )
+                        }
+                    ]
+                },
+
+            ],
+            response_format={
+                "type": "text"
+            },
+            temperature=0,
+            max_tokens=2048,
+        )
+        # Extracts the response text
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        return f"Error fetching response: {str(e)}"
+
+def get_ai_response2(json_item):
+    module = json_item["module"]
+    """Function to get a response from the AI."""
+    try:
+        main_file_path = 'backend/app/main.py'
+        with open(main_file_path, 'r') as file:
+            main_file_content = file.read()
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {
+                    "role": "system",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": "You're a senior dev. Don't explain the code, just generate the code block itself in json format.\n\nexample \n```[{\n\"file_path\":\"path of the file\",\n\"file_content\":\"code of the file\",\n}]```"
+                        }
+                    ]
+                },
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": (
+            f"add import and router for {module} module in this file \n\n"
+                    
              "```python\n"
             f"{main_file_path}\n"
             f"{main_file_content}\n"
@@ -224,8 +264,9 @@ def main():
         json_data = json.loads(file.read())
         for json_item in json_data:
             response = get_ai_response(json_item)
-        
-
+            # Write response content to appropriate directory/file
+            result = write_response_to_file(response)
+            response = get_ai_response2(json_item)
             # Write response content to appropriate directory/file
             result = write_response_to_file(response)
             print(json_item["module"], "done")

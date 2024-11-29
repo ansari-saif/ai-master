@@ -1,8 +1,12 @@
 from fastapi import FastAPI
+from fastapi import APIRouter
 from backend.app.api.v1.routes.todo import router as todo_router
 from app.core.database import engine
 from app.models.todo import SQLModel
 from fastapi.middleware.cors import CORSMiddleware
+from backend.app.api.v1.routes.patient import router as patient_router
+from backend.app.api.v1.routes.doctor import router as doctor_router
+from backend.app.api.v1.routes.asset import router as asset_router
 
 app = FastAPI(
     servers=[
@@ -26,3 +30,6 @@ def on_startup():
 
 # Include routes
 app.include_router(todo_router, prefix="/api/v1/todo")
+app.include_router(patient_router, prefix="/api/v1/patient")
+app.include_router(doctor_router, prefix="/api/v1/doctor")
+app.include_router(asset_router, prefix="/api/v1/asset")

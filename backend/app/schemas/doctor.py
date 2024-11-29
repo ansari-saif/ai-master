@@ -1,24 +1,23 @@
 from pydantic import BaseModel
 from typing import Optional
 
-class DoctorCreate(BaseModel):
-    name: str
-    specialty: str
-    contact_information: str
+class TodoCreate(BaseModel):
+    title: str
+    description: Optional[str] = None
 
-class DoctorRead(BaseModel):
+class TodoRead(BaseModel):
     id: int
-    name: str
-    specialty: str
-    contact_information: str
+    title: str
+    description: Optional[str] = None
+    is_completed: bool
 
     class Config:
         orm_mode = True
 
-class DoctorUpdateSchema(BaseModel):
-    name: Optional[str] = None
-    specialty: Optional[str] = None
-    contact_information: Optional[str] = None
+class TodoUpdateSchema(BaseModel):
+    title: Optional[str] = None
+    description: Optional[str] = None
+    is_completed: Optional[bool] = None
 
     class Config:
         orm_mode = True

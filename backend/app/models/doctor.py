@@ -1,18 +1,18 @@
 from sqlmodel import SQLModel, Field
 from typing import Optional
 
-class DoctorBase(SQLModel):
-    name: str
-    specialty: str
-    contact_information: str
+class TodoBase(SQLModel):
+    title: str
+    description: Optional[str] = None
+    is_completed: bool = False
 
-class DoctorCreate(DoctorBase):
+class TodoCreate(TodoBase):
     pass
 
-class Doctor(DoctorBase, table=True):
+class Todo(TodoBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
 
-class DoctorUpdate(DoctorBase):
-    name: Optional[str] = None
-    specialty: Optional[str] = None
-    contact_information: Optional[str] = None
+class TodoUpdate(TodoBase):
+    title: Optional[str] = None
+    description: Optional[str] = None
+    is_completed: Optional[bool] = None

@@ -1,35 +1,35 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
-from app.models.doctor import Doctor, DoctorCreate
-from app.schemas.doctor import DoctorRead, DoctorUpdateSchema
+from app.models.todo import Todo, TodoCreate
+from app.schemas.todo import TodoRead, TodoUpdateSchema
 from app.core.database import get_session
-from app.services.doctor_service import (
-    create_doctor_service, delete_doctor_service, get_doctor_service, list_all_doctor_service, update_doctor_service
+from app.services.todo_service import (
+    create_todo_service, delete_todo_service, get_todo_service, list_all_todo_service, update_todo_service
 )
 
 router = APIRouter()
 
-@router.post("/", response_model=DoctorRead, tags=["doctor"])
-def create_doctor(doctor: DoctorCreate, session: Session = Depends(get_session)):
-    new_doctor = create_doctor_service(doctor, session)
-    return new_doctor
+@router.post("/", response_model=TodoRead, tags=["todo"])
+def create_todo(todo: TodoCreate, session: Session = Depends(get_session)):
+    new_todo = create_todo_service(todo, session)
+    return new_todo
 
-@router.get("/{doctor_id}", response_model=DoctorRead, tags=["doctor"])
-def get_doctor(doctor_id: int, session: Session = Depends(get_session)):
-    doctor = get_doctor_service(doctor_id, session)
-    return doctor
+@router.get("/{todo_id}", response_model=TodoRead, tags=["todo"])
+def get_todo(todo_id: int, session: Session = Depends(get_session)):
+    todo = get_todo_service(todo_id, session)
+    return todo
 
-@router.put("/{doctor_id}", response_model=DoctorRead, tags=["doctor"])
-def update_doctor(doctor_id: int, doctor_data: DoctorUpdateSchema, session: Session = Depends(get_session)):
-    updated_doctor = update_doctor_service(doctor_id, doctor_data, session)
-    return updated_doctor
+@router.put("/{todo_id}", response_model=TodoRead, tags=["todo"])
+def update_todo(todo_id: int, todo_data: TodoUpdateSchema, session: Session = Depends(get_session)):
+    updated_todo = update_todo_service(todo_id, todo_data, session)
+    return updated_todo
 
-@router.delete("/{doctor_id}", response_model=dict, tags=["doctor"])
-def delete_doctor(doctor_id: int, session: Session = Depends(get_session)):
-    delete_doctor_service(doctor_id, session)
-    return {"message": "Doctor deleted successfully"}
+@router.delete("/{todo_id}", response_model=dict, tags=["todo"])
+def delete_todo(todo_id: int, session: Session = Depends(get_session)):
+    delete_todo_service(todo_id, session)
+    return {"message": "Todo deleted successfully"}
 
-@router.get("/", response_model=list[DoctorRead], tags=["doctor"])
-def list_all_doctor(session: Session = Depends(get_session)):
-    doctor = list_all_doctor_service(session)
-    return doctor
+@router.get("/", response_model=list[TodoRead], tags=["todo"])
+def list_all_todo(session: Session = Depends(get_session)):
+    todo = list_all_todo_service(session)
+    return todo
