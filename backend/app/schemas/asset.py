@@ -6,6 +6,7 @@ class AssetCreate(BaseModel):
     quantity: int
     location: str
 
+
 class AssetRead(BaseModel):
     id: int
     asset_name: str

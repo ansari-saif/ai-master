@@ -10,7 +10,9 @@ client = OpenAI(api_key="sk-proj-FGTYPkzhFeKLJNHEvM_Yxp2GMXwWQgxH-tiTX3h1KubsfUM
 def get_ai_response(json_data):
     """Function to get a response from the AI."""
     try:
-
+        main_file_path = 'backend/app/main.py'
+        with open(main_file_path, 'r') as file:
+            main_file_content = file.read()
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -177,6 +179,10 @@ def get_ai_response(json_data):
             "    todo = session.exec(select(Todo)).all()\n"
             "    return todo\n"
             "```\n"
+             "```python\n"
+            f"{main_file_path}\n"
+            f"{main_file_content}\n"
+            "Note: Please update the content of the main.py file without replacing it entirely"
         )
                         }
                     ]

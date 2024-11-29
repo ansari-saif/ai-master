@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from app.api.v1.routes.todos import router as todo_router
-from app.api.v1.routes.patients import router as patients_router
 from app.core.database import engine
 from app.models.todo import SQLModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -27,4 +26,3 @@ def on_startup():
 
 # Include routes
 app.include_router(todo_router, prefix="/api/v1/todos")
-app.include_router(patients_router, prefix="/api/v1/patients")

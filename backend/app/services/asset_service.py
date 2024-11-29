@@ -15,6 +15,7 @@ def get_asset_service(asset_id: int, session: Session):
         raise HTTPException(status_code=404, detail="Asset not found")
     return asset
 
+# Update Asset service
 def update_asset_service(asset_id: int, asset_data: AssetUpdate, session: Session):
     asset = session.get(Asset, asset_id)
     if not asset:
@@ -26,6 +27,7 @@ def update_asset_service(asset_id: int, asset_data: AssetUpdate, session: Sessio
     session.refresh(asset)
     return asset
 
+# Delete Asset service
 def delete_asset_service(asset_id: int, session: Session):
     asset = session.get(Asset, asset_id)
     if not asset:
@@ -33,6 +35,7 @@ def delete_asset_service(asset_id: int, session: Session):
     session.delete(asset)
     session.commit()
 
-def list_all_assets_service(session: Session):
-    assets = session.exec(select(Asset)).all()
-    return assets
+# List All asset service
+def list_all_asset_service(session: Session):
+    asset = session.exec(select(Asset)).all()
+    return asset
