@@ -182,7 +182,6 @@ def get_ai_response(json_data):
              "```python\n"
             f"{main_file_path}\n"
             f"{main_file_content}\n"
-            "Note: Please update the content of the main.py file. do not replace content at all"
         )
                         }
                     ]
