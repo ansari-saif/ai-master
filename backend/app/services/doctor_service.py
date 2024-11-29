@@ -15,7 +15,6 @@ def get_doctor_service(doctor_id: int, session: Session):
         raise HTTPException(status_code=404, detail="Doctor not found")
     return doctor
 
-# Update Doctor service
 def update_doctor_service(doctor_id: int, doctor_data: DoctorUpdate, session: Session):
     doctor = session.get(Doctor, doctor_id)
     if not doctor:
@@ -27,7 +26,6 @@ def update_doctor_service(doctor_id: int, doctor_data: DoctorUpdate, session: Se
     session.refresh(doctor)
     return doctor
 
-# Delete Doctor service
 def delete_doctor_service(doctor_id: int, session: Session):
     doctor = session.get(Doctor, doctor_id)
     if not doctor:
@@ -35,7 +33,6 @@ def delete_doctor_service(doctor_id: int, session: Session):
     session.delete(doctor)
     session.commit()
 
-# List All doctor service
 def list_all_doctor_service(session: Session):
     doctor = session.exec(select(Doctor)).all()
     return doctor

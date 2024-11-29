@@ -14,8 +14,14 @@ class PatientRead(BaseModel):
     gender: str
     contact_information: str
 
+    class Config:
+        orm_mode = True
+
 class PatientUpdateSchema(BaseModel):
     name: Optional[str] = None
     age: Optional[int] = None
     gender: Optional[str] = None
     contact_information: Optional[str] = None
+
+    class Config:
+        orm_mode = True

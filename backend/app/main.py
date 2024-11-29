@@ -25,4 +25,4 @@ def on_startup():
     SQLModel.metadata.create_all(engine)
 
 # Include routes
-app.include_router(todo_router, prefix="/api/v1/todos")
+app.include_router(todo_router, prefix="/api/v1/todo")
