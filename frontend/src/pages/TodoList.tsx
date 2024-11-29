@@ -3,6 +3,7 @@ import TodoItem from '../components/TodoItem';
 import { TodoService, TodoRead } from '../client';
 import AddTodoForm from '@/components/AddTodoForm';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const TodoList: React.FC = () => {
   const [todos, setTodo] = useState<TodoRead[]>([]);
@@ -46,6 +47,9 @@ const TodoList: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-100 to-purple-100 p-8">
+      <Link to="/" className="ml-4 bg-transparent border border-black px-6 py-3 rounded-md text-black hover:bg-white hover:text-indigo-600">
+        Home
+      </Link>
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
