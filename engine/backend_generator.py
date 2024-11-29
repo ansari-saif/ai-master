@@ -216,16 +216,14 @@ def write_response_to_file(response):
 def main():
     # Read the master.json file to get the JSON data
     with open('engine/master.json', 'r') as file:
-        json_data = file.read()
-        response = get_ai_response(json_data)
-        print("Response from AI:\n", response)
-        file = open("res.txt", "w")
-        file.write(response)
-        file.close()
+        json_data = json.loads(file.read())
+        for json_item in json_data:
+            response = get_ai_response(json_item)
+        
 
-    # Write response content to appropriate directory/file
-    result = write_response_to_file(response)
-    print(result)
+            # Write response content to appropriate directory/file
+            result = write_response_to_file(response)
+            print(json_item["module"], "done")
 
 
 if __name__ == "__main__":
