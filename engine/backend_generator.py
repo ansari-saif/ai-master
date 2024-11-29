@@ -185,7 +185,7 @@ def get_ai_response(json_data):
                 "type": "text"
             },
             temperature=0,
-            max_tokens=2048,
+            max_tokens=5000,
         )
         # Extracts the response text
         return response.choices[0].message.content.strip()
