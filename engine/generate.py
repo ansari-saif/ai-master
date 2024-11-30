@@ -81,7 +81,17 @@ def main():
         print("\nGenerating frontend files...")
         FrontendGenerator(client)
         print("Frontend files generated successfully.")
-      
+        
+        print("\nStarting backend server...")
+        subprocess.run(["pkill", "-f", "uvicorn"], check=True)
+        subprocess.run(["uvicorn", "app.main:app", "--reload"], cwd="backend", check=True)
+        print("Backend server started successfully.")
+        
+        if os.path.exists("engine/master.json"):
+            os.remove("engine/master.json")
+            print("engine/master.json file deleted successfully.")
+        else:
+            print("engine/master.json file does not exist.")
 
 if __name__ == "__main__":
     main()
