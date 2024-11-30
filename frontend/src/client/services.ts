@@ -2,47 +2,47 @@ import type { CancelablePromise } from './core/CancelablePromise';
 import { OpenAPI } from './core/OpenAPI';
 import { request as __request } from './core/request';
 
-import type { TodoCreate,TodoRead,TodoUpdateSchema,PatientCreate,PatientRead,PatientUpdate } from './models';
+import type { TodoCreate, TodoRead, TodoUpdateSchema, PatientCreate, PatientRead, PatientUpdate } from './models';
 
 export type TodoData = {
-        CreateTodoApiV1TodoPost: {
-                    requestBody: TodoCreate
-                    
-                };
-GetTodoApiV1TodoTodoIdGet: {
-                    todoId: number
-                    
-                };
-UpdateTodoApiV1TodoTodoIdPut: {
-                    requestBody: TodoUpdateSchema
-todoId: number
-                    
-                };
-DeleteTodoApiV1TodoTodoIdDelete: {
-                    todoId: number
-                    
-                };
-    }
+	CreateTodoApiV1TodoPost: {
+		requestBody: TodoCreate
+
+	};
+	GetTodoApiV1TodoTodoIdGet: {
+		todoId: number
+
+	};
+	UpdateTodoApiV1TodoTodoIdPut: {
+		requestBody: TodoUpdateSchema
+		todoId: number
+
+	};
+	DeleteTodoApiV1TodoTodoIdDelete: {
+		todoId: number
+
+	};
+}
 
 export type PatientData = {
-        CreatePatientApiV1PatientPost: {
-                    requestBody: PatientCreate
-                    
-                };
-GetPatientApiV1PatientIdGet: {
-                    patientId: number
-                    
-                };
-UpdatePatientApiV1PatientIdPut: {
-                    patientId: number
-requestBody: PatientUpdate
-                    
-                };
-DeletePatientApiV1PatientIdDelete: {
-                    patientId: number
-                    
-                };
-    }
+	CreatePatientApiV1PatientPost: {
+		requestBody: PatientCreate
+
+	};
+	GetPatientApiV1PatientIdGet: {
+		patientId: number
+
+	};
+	UpdatePatientApiV1PatientIdPut: {
+		patientId: number
+		requestBody: PatientUpdate
+
+	};
+	DeletePatientApiV1PatientIdDelete: {
+		patientId: number
+
+	};
+}
 
 export class TodoService {
 
@@ -52,7 +52,7 @@ export class TodoService {
 	 * @throws ApiError
 	 */
 	public static listAllTodoApiV1TodoGet(): CancelablePromise<Array<TodoRead>> {
-				return __request(OpenAPI, {
+		return __request(OpenAPI, {
 			method: 'GET',
 			url: '/api/v1/todo/',
 		});
@@ -65,8 +65,8 @@ export class TodoService {
 	 */
 	public static createTodoApiV1TodoPost(data: TodoData['CreateTodoApiV1TodoPost']): CancelablePromise<TodoRead> {
 		const {
-requestBody,
-} = data;
+			requestBody,
+		} = data;
 		return __request(OpenAPI, {
 			method: 'POST',
 			url: '/api/v1/todo/',
@@ -82,8 +82,8 @@ requestBody,
 	 */
 	public static getTodoApiV1TodoTodoIdGet(data: TodoData['GetTodoApiV1TodoTodoIdGet']): CancelablePromise<TodoRead> {
 		const {
-todoId,
-} = data;
+			todoId,
+		} = data;
 		return __request(OpenAPI, {
 			method: 'GET',
 			url: '/api/v1/todo/{todo_id}',
@@ -100,9 +100,9 @@ todoId,
 	 */
 	public static updateTodoApiV1TodoTodoIdPut(data: TodoData['UpdateTodoApiV1TodoTodoIdPut']): CancelablePromise<TodoRead> {
 		const {
-todoId,
-requestBody,
-} = data;
+			todoId,
+			requestBody,
+		} = data;
 		return __request(OpenAPI, {
 			method: 'PUT',
 			url: '/api/v1/todo/{todo_id}',
@@ -121,8 +121,8 @@ requestBody,
 	 */
 	public static deleteTodoApiV1TodoTodoIdDelete(data: TodoData['DeleteTodoApiV1TodoTodoIdDelete']): CancelablePromise<Record<string, unknown>> {
 		const {
-todoId,
-} = data;
+			todoId,
+		} = data;
 		return __request(OpenAPI, {
 			method: 'DELETE',
 			url: '/api/v1/todo/{todo_id}',
@@ -142,7 +142,7 @@ export class PatientService {
 	 * @throws ApiError
 	 */
 	public static listAllPatientApiV1PatientGet(): CancelablePromise<Array<PatientRead>> {
-				return __request(OpenAPI, {
+		return __request(OpenAPI, {
 			method: 'GET',
 			url: '/api/v1/patient/',
 		});
@@ -155,8 +155,8 @@ export class PatientService {
 	 */
 	public static createPatientApiV1PatientPost(data: PatientData['CreatePatientApiV1PatientPost']): CancelablePromise<PatientRead> {
 		const {
-requestBody,
-} = data;
+			requestBody,
+		} = data;
 		return __request(OpenAPI, {
 			method: 'POST',
 			url: '/api/v1/patient/',
@@ -172,8 +172,8 @@ requestBody,
 	 */
 	public static getPatientApiV1PatientIdGet(data: PatientData['GetPatientApiV1PatientIdGet']): CancelablePromise<PatientRead> {
 		const {
-patientId,
-} = data;
+			patientId,
+		} = data;
 		return __request(OpenAPI, {
 			method: 'GET',
 			url: '/api/v1/patient/{patient_id}',
@@ -190,9 +190,9 @@ patientId,
 	 */
 	public static updatePatientApiV1PatientIdPut(data: PatientData['UpdatePatientApiV1PatientIdPut']): CancelablePromise<PatientRead> {
 		const {
-patientId,
-requestBody,
-} = data;
+			patientId,
+			requestBody,
+		} = data;
 		return __request(OpenAPI, {
 			method: 'PUT',
 			url: '/api/v1/patient/{patient_id}',
@@ -211,8 +211,8 @@ requestBody,
 	 */
 	public static deletePatientApiV1PatientIdDelete(data: PatientData['DeletePatientApiV1PatientIdDelete']): CancelablePromise<void> {
 		const {
-patientId,
-} = data;
+			patientId,
+		} = data;
 		return __request(OpenAPI, {
 			method: 'DELETE',
 			url: '/api/v1/patient/{patient_id}',
