@@ -20,7 +20,7 @@ def get_ai_response(prompt):
                     "content": [
                         {
                             "type": "text",
-                            "text": "You're a senior dev. Don't explain the code, just generate the code block itself in json format.\n\nexample \n```[{\n\"file_path\":\"path of the file\",\n\"file_content\":\"code of the file\",\n}]```"
+                            "text": "You're a senior dev.   just generate the code block itself in json format. [\n    {\n        \"module\": \"module name in snake case\",\n        \"fields\": [\n            {\n                \"name\": \"field_name\",\n                \"type\": \"field_type\"\n            }\n        ]\n    }\n]`"
                         }
                     ]
                 },
@@ -42,44 +42,25 @@ def get_ai_response(prompt):
             max_tokens=2048,
         )
         # Extracts the response text
-        return response.choices[0].message.content.strip()
+        return response.choices[0].message.content.strip().strip("```json").strip("```")
     except Exception as e:
         return f"Error fetching response: {str(e)}"
 
 
-def write_response_to_file(response):
-    """Writes the response content to the specified directory and file."""
-    # The response should contain directory path and content. Example:
-    # "Directory: /path/to/folder FileName: output.txt Content: <content>"
-    try:
-        # Extract directory, filename, and content from response
-        data_list = json.loads(response.strip("```json").strip("```"))
-        for file in data_list:
-            file_path = file["file_path"]
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
-
-            with open(file_path, 'w') as f:
-                f.write(file["file_content"])
-        return f"Content successfully written to {file_path}"
-    except Exception as e:
-        return f"Error writing to file: {str(e)}"
-
-
 def main():
     # Accept a prompt from the user
-    prompt = input("Enter the prompt: ")
+    with open("engine/prd.txt", "r") as file:
+        prompt = file.read()
 
-    # Get response from AI
-    response = get_ai_response(prompt)
-    print("Response from AI:\n", response)
-    file = open("res.txt", "w")
-    file.write(response)
-    file.close()
+        # Get response from AI
+        response = get_ai_response(prompt)
+        print("Response from AI:\n", response)
+        file = open("engine/master.json", "w")
+        file.write(response)
+        file.close()
 
-    # Write response content to appropriate directory/file
-    result = write_response_to_file(response)
-    print(result)
-
+      
 
 if __name__ == "__main__":
     main()
+
