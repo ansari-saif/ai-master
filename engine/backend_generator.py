@@ -8,6 +8,8 @@ class BackendGenerator:
         self.main()
     def get_ai_response(self, json_data):
         """Function to get a response from the AI."""
+        module = json_data["module"]
+
         try:
             response = self.client.chat.completions.create(
                 model="gpt-3.5-turbo",
@@ -27,7 +29,7 @@ class BackendGenerator:
                             {
                                 "type": "text",
                                 "text": (
-                f"\ncreate crud apis in fastapi for this \n\"\"\"\n {json_data} \n\"\"\"\n\n"
+                f"\ncreate crud apis in fastapi for this moduel `{module}` here is the fields \n\"\"\"\n {json_data} \n\"\"\"\n\n"
                 "here is the current file directory\n\n"
                 "\"\"\"\n"
                 "backend\n"
