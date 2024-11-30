@@ -57,7 +57,7 @@ const TodoList: React.FC = () => {
         className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden"
       >
         <div className="p-6">
-          <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">To-Do List</h1>
+          <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">ToDo</h1>
           <AddTodoForm onAdd={getTodo} />
           <div className="mt-6 space-y-4">
             {todos.map((todo) => (
