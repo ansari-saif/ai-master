@@ -78,7 +78,7 @@ def main():
         subprocess.run(["npm", "run", "generate-client"], cwd="frontend", check=True)
         print("Client generated successfully.")
         
-        print("\nGenerating backend files...")
+        print("\nGenerating frontend files...")
         FrontendGenerator(client)
         print("Frontend files generated successfully.")
       
