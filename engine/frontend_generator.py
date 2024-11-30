@@ -99,7 +99,7 @@ def get_ai_response2(json_item):
                     "content": [
                         {
                             "type": "text",
-                            "text": f"here is the `App.tsx` file  you've to add `{module}` rounter in this\n{app_file_path}```{app_file_content}```\n\n\nhere is the home page and you've to add {module} link in  this page\n{home_file_path}```{home_file_content}```"
+                            "text": f"here is the `App.tsx` file  you've to add `{module}` rounter and add imports in this\n{app_file_path}```{app_file_content}```\n\n\nhere is the home page and you've to add {module} link in  this page\n{home_file_path}```{home_file_content}```"
                         }
                     ]
                 },
@@ -140,8 +140,8 @@ def main():
         json_data = json.loads(file.read())
         for json_item in json_data:
             # Get response from AI
-            response = get_ai_response(json_item)
-            result = write_response_to_file(response)
+            # response = get_ai_response(json_item)
+            # result = write_response_to_file(response)
             response = get_ai_response2(json_item)
             result = write_response_to_file(response)
             print(json_item["module"], "done")
