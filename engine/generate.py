@@ -59,16 +59,17 @@ def main():
 
         # Get response from AI
         response = get_ai_response(prompt)
-        print("Response from AI:\n", response)
         file = open("engine/master.json", "w")
+        print("master.json file created successfully.")
         file.write(response)
         file.close()
-        # user_input = input("Review master.json file and feel free to change it. Press Y if you're done (Y/n): ").strip().lower()
-        # if user_input != 'Y':
-        #     print("Exiting the code generation process.")
-        #     return
-        # generat_openapi_file()
-        # print("OpenAPI file generated successfully.")
+        user_input = input("Review master.json file and feel free to change it. Press Y if you're done (Y/n): ").strip().lower()
+        
+        if user_input != 'y':
+            print("Exiting the code generation process.")
+            return
+        generat_openapi_file()
+        print("OpenAPI file generated successfully.")
         # BackendGenerator(client)
         # print("Backend files generated successfully.")
         # subprocess.run(["npm", "run", "generate-client"], cwd="frontend", check=True)
