@@ -55,32 +55,32 @@ def get_ai_response(prompt):
 def main():
     # Accept a prompt from the user
     with open("engine/prd.txt", "r") as file:
-        # prompt = file.read()
+        prompt = file.read()
 
-        # # Get response from AI
-        # response = get_ai_response(prompt)
-        # file = open("engine/master.json", "w")
-        # print("master.json file created successfully.")
-        # file.write(response)
-        # file.close()
-        # user_input = input("Review master.json file and feel free to change it. Press Y if you're done (Y/n): ").strip().lower()
+        # Get response from AI
+        response = get_ai_response(prompt)
+        file = open("engine/master.json", "w")
+        print("master.json file created successfully.")
+        file.write(response)
+        file.close()
+        user_input = input("Review master.json file and feel free to change it. Press Y if you're done (Y/n): ").strip().lower()
         
-        # if user_input != 'y':
-        #     print("Exiting the code generation process.")
-        #     return
-        # generat_openapi_file()
-        # print("OpenAPI file generated successfully.")
+        if user_input != 'y':
+            print("Exiting the code generation process.")
+            return
+        generat_openapi_file()
+        print("OpenAPI file generated successfully.")
         
         print("\nGenerating backend files...")
         BackendGenerator(client)
         print("Backend files generated successfully.")
         
-        # subprocess.run(["npm", "run", "generate-client"], cwd="frontend", check=True)
-        # print("Client generated successfully.")
+        subprocess.run(["npm", "run", "generate-client"], cwd="frontend", check=True)
+        print("Client generated successfully.")
         
-        # print("\nGenerating frontend files...")
-        # FrontendGenerator(client)
-        # print("Frontend files generated successfully.")
+        print("\nGenerating frontend files...")
+        FrontendGenerator(client)
+        print("Frontend files generated successfully.")
         
         print("\nStarting backend server...")
         subprocess.run(["uvicorn", "app.main:app", "--reload"], cwd="backend", check=True)
