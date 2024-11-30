@@ -18,9 +18,3 @@
         - Asset name
         - Quantity
         - Location
-
-### **Constraints**
-
-- Ensure a simple UI for easy input and retrieval of data.
-- Store data in a secure database (prefer PostgreSQL or MongoDB).
-- Accessible via a web browser.
