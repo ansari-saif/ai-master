@@ -3,9 +3,9 @@ import re
 from openai import OpenAI
 import os
 
-from engine.backend_generator import BackendGenerator
-from engine.frontend_generator import FrontendGenerator
-from engine.openapi_file_generator import generat_openapi_file
+from backend_generator import BackendGenerator
+from frontend_generator import FrontendGenerator
+from openapi_file_generator import generat_openapi_file
 import subprocess 
 
 # Set up your OpenAI API key (Make sure to replace with your actual API key)
@@ -25,7 +25,7 @@ def get_ai_response(prompt):
                     "content": [
                         {
                             "type": "text",
-                            "text": "You're a senior dev.   just generate the code block itself in json format. [\n    {\n        \"module\": \"module name in snake case\",\n        \"fields\": [\n            {\n                \"name\": \"field_name\",\n                \"type\": \"field_type\"\n            }\n        ]\n    }\n]`"
+                            "text": "You're a senior dev.   just generate the code block itself in json format. [\n    {\n        \"module\": \"module it should be in singular one word\",\n        \"fields\": [\n            {\n                \"name\": \"field_name\",\n                \"type\": \"field_type\"\n            }\n        ]\n    }\n]`"
                         }
                     ]
                 },
@@ -63,18 +63,18 @@ def main():
         file = open("engine/master.json", "w")
         file.write(response)
         file.close()
-        user_input = input("Review master.json file and feel free to change it. Press Y if you're done (Y/n): ").strip().lower()
-        if user_input != 'Y':
-            print("Exiting the code generation process.")
-            return
-        generat_openapi_file()
-        print("OpenAPI file generated successfully.")
-        BackendGenerator(client)
-        print("Backend files generated successfully.")
-        subprocess.run(["npm", "run", "generate-client"], cwd="frontend", check=True)
-        print("Client generated successfully.")
-        FrontendGenerator(client)
-        print("Frontend files generated successfully.")
+        # user_input = input("Review master.json file and feel free to change it. Press Y if you're done (Y/n): ").strip().lower()
+        # if user_input != 'Y':
+        #     print("Exiting the code generation process.")
+        #     return
+        # generat_openapi_file()
+        # print("OpenAPI file generated successfully.")
+        # BackendGenerator(client)
+        # print("Backend files generated successfully.")
+        # subprocess.run(["npm", "run", "generate-client"], cwd="frontend", check=True)
+        # print("Client generated successfully.")
+        # FrontendGenerator(client)
+        # print("Frontend files generated successfully.")
       
 
 if __name__ == "__main__":
