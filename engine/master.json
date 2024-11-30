@@ -1,22 +1,19 @@
 
 [
+    
     {
-        "module": "patient",
+        "module": "asset",
         "fields": [
             {
-                "name": "name",
+                "name": "asset_name",
                 "type": "string"
             },
             {
-                "name": "age",
+                "name": "quantity",
                 "type": "integer"
             },
             {
-                "name": "gender",
-                "type": "string"
-            },
-            {
-                "name": "contact_information",
+                "name": "location",
                 "type": "string"
             }
         ]

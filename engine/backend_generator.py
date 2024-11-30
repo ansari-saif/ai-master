@@ -29,7 +29,7 @@ class BackendGenerator:
                             {
                                 "type": "text",
                                 "text": (
-                f"\ncreate crud apis in fastapi for this moduel `{module}` here is the fields \n\"\"\"\n {json_data} \n\"\"\"\n\n"
+                f"\ncreate crud apis in fastapi for this moduel `{module}` section of this app. here is the fields \n\"\"\"\n {json_data} \n\"\"\"\n\n"
                 "here is the current file directory\n\n"
                 "\"\"\"\n"
                 "backend\n"
