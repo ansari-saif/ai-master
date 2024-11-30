@@ -16,7 +16,7 @@ def get_ai_response(json_item):
         with open(TodoItem, 'r') as file:
             TodoItemContent = file.read()
             
-        AddTodoFormContent = 'frontend/src/components/AddTodoFormContent.tsx'
+        AddTodoFormContent = 'frontend/src/components/AddTodoForm.tsx'
         with open(AddTodoFormContent, 'r') as file:
             AddTodoFormContentContent = file.read()
             
@@ -67,6 +67,7 @@ def get_ai_response(json_item):
         # Extracts the response text
         return response.choices[0].message.content.strip()
     except Exception as e:
+        print(f"Error fetching response: {str(e)}")
         return f"Error fetching response: {str(e)}"
 
 def get_ai_response2(json_item):
@@ -141,8 +142,8 @@ def main():
             # Get response from AI
             response = get_ai_response(json_item)
             result = write_response_to_file(response)
-            response = get_ai_response2(json_item)
-            result = write_response_to_file(response)
+            # response = get_ai_response2(json_item)
+            # result = write_response_to_file(response)
             print(json_item["module"], "done")
 
 
