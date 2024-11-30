@@ -10,9 +10,9 @@ def services_list(word):
     return json.dumps([
         f"listAll{word.capitalize()}ApiV1{word.capitalize()}Get",
         f"create{word.capitalize()}ApiV1{word.capitalize()}Post",
-        f"get{word.capitalize()}ApiV1{word.capitalize()}{word.capitalize()}IdGet",
-        f"update{word.capitalize()}ApiV1{word.capitalize()}{word.capitalize()}IdPut",
-        f"delete{word.capitalize()}ApiV1{word.capitalize()}{word.capitalize()}IdDelete",
+        f"get{word.capitalize()}ApiV1{word.capitalize()}IdGet",
+        f"update{word.capitalize()}ApiV1{word.capitalize()}IdPut",
+        f"delete{word.capitalize()}ApiV1{word.capitalize()}IdDelete",
     ])
 
 
@@ -55,7 +55,7 @@ def get_ai_response(json_item):
                             "text": (
                                 f"```Create a React CRUD application for the `{module}` module"
                                 f"For this data json : ```{json_structure}```"
-                                "Use these methods for backend api calls\n"
+                                f"Use these methods of {module.capitalize()}Service\n"
                                 f"{services_list(module)}\n"
                                 "Here is example file for your reference for `todo` module\n"
                                 f"frontend/src/pages/Todo.tsx```{TodoContent}```\n"
