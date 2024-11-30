@@ -20,39 +20,5 @@
                 "type": "string"
             }
         ]
-    },
-    {
-        "module": "doctor",
-        "fields": [
-            {
-                "name": "name",
-                "type": "string"
-            },
-            {
-                "name": "specialty",
-                "type": "string"
-            },
-            {
-                "name": "contact_information",
-                "type": "string"
-            }
-        ]
-    },
-    {
-        "module": "asset",
-        "fields": [
-            {
-                "name": "asset_name",
-                "type": "string"
-            },
-            {
-                "name": "quantity",
-                "type": "integer"
-            },
-            {
-                "name": "location",
-                "type": "string"
-            }
-        ]
     }
 ]

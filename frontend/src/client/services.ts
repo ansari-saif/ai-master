@@ -2,7 +2,7 @@ import type { CancelablePromise } from './core/CancelablePromise';
 import { OpenAPI } from './core/OpenAPI';
 import { request as __request } from './core/request';
 
-import type { TodoCreate,TodoRead,TodoUpdateSchema,Patient_managementCreate,Patient_managementRead,Doctor_managementCreate,Doctor_managementRead,Asset_managementCreate,Asset_managementRead } from './models';
+import type { TodoCreate,TodoRead,TodoUpdateSchema,PatientCreate,PatientRead } from './models';
 
 export type TodoData = {
         CreateTodoApiV1TodoPost: {
@@ -24,23 +24,9 @@ DeleteTodoApiV1TodoTodoIdDelete: {
                 };
     }
 
-export type PatientManagementData = {
-        CreatePatientManagementApiV1PatientManagementPost: {
-                    requestBody: Patient_managementCreate
-                    
-                };
-    }
-
-export type DoctorManagementData = {
-        CreateDoctorManagementApiV1DoctorManagementPost: {
-                    requestBody: Doctor_managementCreate
-                    
-                };
-    }
-
-export type AssetManagementData = {
-        CreateAssetManagementApiV1AssetManagementPost: {
-                    requestBody: Asset_managementCreate
+export type PatientData = {
+        CreatePatientApiV1PatientPost: {
+                    requestBody: PatientCreate
                     
                 };
     }
@@ -135,98 +121,32 @@ todoId,
 
 }
 
-export class PatientManagementService {
+export class PatientService {
 
 	/**
-	 * List All Patient_management
-	 * @returns Patient_managementRead Successful Response
+	 * List All Patient
+	 * @returns PatientRead Successful Response
 	 * @throws ApiError
 	 */
-	public static listAllPatientManagementApiV1PatientManagementGet(): CancelablePromise<Array<Patient_managementRead>> {
+	public static listAllPatientApiV1PatientGet(): CancelablePromise<Array<PatientRead>> {
 				return __request(OpenAPI, {
 			method: 'GET',
-			url: '/api/v1/patient_management/',
+			url: '/api/v1/patient/',
 		});
 	}
 
 	/**
-	 * Create Patient_management
-	 * @returns Patient_managementRead Successful Response
+	 * Create Patient
+	 * @returns PatientRead Successful Response
 	 * @throws ApiError
 	 */
-	public static createPatientManagementApiV1PatientManagementPost(data: PatientManagementData['CreatePatientManagementApiV1PatientManagementPost']): CancelablePromise<Patient_managementRead> {
+	public static createPatientApiV1PatientPost(data: PatientData['CreatePatientApiV1PatientPost']): CancelablePromise<PatientRead> {
 		const {
 requestBody,
 } = data;
 		return __request(OpenAPI, {
 			method: 'POST',
-			url: '/api/v1/patient_management/',
-			body: requestBody,
-			mediaType: 'application/json',
-		});
-	}
-
-}
-
-export class DoctorManagementService {
-
-	/**
-	 * List All Doctor_management
-	 * @returns Doctor_managementRead Successful Response
-	 * @throws ApiError
-	 */
-	public static listAllDoctorManagementApiV1DoctorManagementGet(): CancelablePromise<Array<Doctor_managementRead>> {
-				return __request(OpenAPI, {
-			method: 'GET',
-			url: '/api/v1/doctor_management/',
-		});
-	}
-
-	/**
-	 * Create Doctor_management
-	 * @returns Doctor_managementRead Successful Response
-	 * @throws ApiError
-	 */
-	public static createDoctorManagementApiV1DoctorManagementPost(data: DoctorManagementData['CreateDoctorManagementApiV1DoctorManagementPost']): CancelablePromise<Doctor_managementRead> {
-		const {
-requestBody,
-} = data;
-		return __request(OpenAPI, {
-			method: 'POST',
-			url: '/api/v1/doctor_management/',
-			body: requestBody,
-			mediaType: 'application/json',
-		});
-	}
-
-}
-
-export class AssetManagementService {
-
-	/**
-	 * List All Asset_management
-	 * @returns Asset_managementRead Successful Response
-	 * @throws ApiError
-	 */
-	public static listAllAssetManagementApiV1AssetManagementGet(): CancelablePromise<Array<Asset_managementRead>> {
-				return __request(OpenAPI, {
-			method: 'GET',
-			url: '/api/v1/asset_management/',
-		});
-	}
-
-	/**
-	 * Create Asset_management
-	 * @returns Asset_managementRead Successful Response
-	 * @throws ApiError
-	 */
-	public static createAssetManagementApiV1AssetManagementPost(data: AssetManagementData['CreateAssetManagementApiV1AssetManagementPost']): CancelablePromise<Asset_managementRead> {
-		const {
-requestBody,
-} = data;
-		return __request(OpenAPI, {
-			method: 'POST',
-			url: '/api/v1/asset_management/',
+			url: '/api/v1/patient/',
 			body: requestBody,
 			mediaType: 'application/json',
 		});

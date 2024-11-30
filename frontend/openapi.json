@@ -167,6 +167,60 @@
           }
         }
       }
+    },
+    "/api/v1/patient/": {
+      "get": {
+        "tags": [
+          "patient"
+        ],
+        "summary": "List All Patient",
+        "operationId": "list_all_patient_api_v1_patient__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PatientRead"
+                  },
+                  "type": "array",
+                  "title": "Response List All Patient Api V1 patient Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "patient"
+        ],
+        "summary": "Create Patient",
+        "operationId": "create_patient_api_v1_patient__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatientCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatientRead"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -305,6 +359,67 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "PatientCreate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "age": {
+            "type": "integer",
+            "title": "Age"
+          },
+          "gender": {
+            "type": "string",
+            "title": "Gender"
+          },
+          "contact_information": {
+            "type": "string",
+            "title": "Contact_information"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "age",
+          "gender",
+          "contact_information"
+        ],
+        "title": "PatientCreate"
+      },
+      "PatientRead": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "age": {
+            "type": "integer",
+            "title": "Age"
+          },
+          "gender": {
+            "type": "string",
+            "title": "Gender"
+          },
+          "contact_information": {
+            "type": "string",
+            "title": "Contact_information"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "age",
+          "gender",
+          "contact_information"
+        ],
+        "title": "PatientRead"
       }
     }
   }
