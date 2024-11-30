@@ -5,6 +5,7 @@ import os
 class BackendGenerator:
     def __init__(self, client):
         self.client = client
+        self.main()
     def get_ai_response(self, json_data):
         """Function to get a response from the AI."""
         try:
