@@ -143,3 +143,20 @@ export const $PatientRead = {
 },
 	},
 } as const;
+
+export const $PatientUpdate = {
+	properties: {
+		name: {
+	type: 'string',
+},
+		age: {
+	type: 'number',
+},
+		gender: {
+	type: 'string',
+},
+		contact_information: {
+	type: 'string',
+},
+	},
+} as const;

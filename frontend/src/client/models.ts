@@ -48,3 +48,12 @@ export type PatientRead = {
 	contact_information: string;
 };
 
+
+
+export type PatientUpdate = {
+	name?: string;
+	age?: number;
+	gender?: string;
+	contact_information?: string;
+};
+
