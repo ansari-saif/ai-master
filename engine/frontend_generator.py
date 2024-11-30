@@ -142,8 +142,8 @@ def main():
             # Get response from AI
             response = get_ai_response(json_item)
             result = write_response_to_file(response)
-            # response = get_ai_response2(json_item)
-            # result = write_response_to_file(response)
+            response = get_ai_response2(json_item)
+            result = write_response_to_file(response)
             print(json_item["module"], "done")
 
 
