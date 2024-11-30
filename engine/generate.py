@@ -70,12 +70,17 @@ def main():
             return
         generat_openapi_file()
         print("OpenAPI file generated successfully.")
-        # BackendGenerator(client)
-        # print("Backend files generated successfully.")
-        # subprocess.run(["npm", "run", "generate-client"], cwd="frontend", check=True)
-        # print("Client generated successfully.")
-        # FrontendGenerator(client)
-        # print("Frontend files generated successfully.")
+        
+        print("\nGenerating backend files...")
+        BackendGenerator(client)
+        print("Backend files generated successfully.")
+        
+        subprocess.run(["npm", "run", "generate-client"], cwd="frontend", check=True)
+        print("Client generated successfully.")
+        
+        print("\nGenerating backend files...")
+        FrontendGenerator(client)
+        print("Frontend files generated successfully.")
       
 
 if __name__ == "__main__":
