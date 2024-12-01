@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Todo from './pages/Todo';
 import HomePage from './components/HomePage';
+
+import Todo from './pages/Todo';
+
 const App: React.FC = () => {
   return (
     <Router>
