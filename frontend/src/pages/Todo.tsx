@@ -5,7 +5,7 @@ import AddTodoForm from '@/components/AddTodoForm';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-const TodoList: React.FC = () => {
+const Todo: React.FC = () => {
   const [todos, setTodo] = useState<TodoRead[]>([]);
   const getTodo = ()=>{
     TodoService.listAllTodoApiV1TodoGet()
@@ -82,4 +82,4 @@ const TodoList: React.FC = () => {
   );
 };
 
-export default TodoList;
+export default Todo;
