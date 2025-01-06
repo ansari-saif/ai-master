@@ -9,7 +9,7 @@ from openapi_file_generator import generat_openapi_file
 import subprocess 
 
 # Set up your OpenAI API key (Make sure to replace with your actual API key)
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="")
 
 
 def get_ai_response(prompt):
