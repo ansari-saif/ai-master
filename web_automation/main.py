@@ -16,7 +16,7 @@ FIGMA_FILE_URL = "https://www.figma.com/file/IFZdbkck0VDYqYeS6fRbNy"
 
 def automate_locofyai():
     # Initialize WebDriver
-    driver = webdriver.Chrome()  # Replace with your preferred WebDriver
+    driver = webdriver.Chrome()  
     driver.maximize_window()
 
     try:
@@ -64,27 +64,13 @@ def automate_locofyai():
         
         iframe = driver.find_element(By.ID, 'plugin-iframe-in-modal')  # Use ID or another suitable locator
         driver.switch_to.frame(iframe)
-        
 
-        # Wait for the outer iframe to be visible
-        WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located((By.ID, "plugin-iframe-in-modal"))
-        )
-
-        # Switch to the outer iframe
-        outer_iframe = driver.find_element(By.ID, "plugin-iframe-in-modal")
-        driver.switch_to.frame(outer_iframe)
         f1 = driver.find_element(By.NAME, "Network Plugin Iframe")
         driver.switch_to.frame(f1)
         # Switch to the inner iframe
         inner0_iframe = driver.find_element(By.ID, "plugin-iframe")
         driver.switch_to.frame(inner0_iframe)
         driver.execute_script('document.querySelector("._btn_1telm_80").click()')
-
-
-
-
-
 
         # # Step 5: Download the Code
         # # Locate the download link or interact with the UI to retrieve the code.
