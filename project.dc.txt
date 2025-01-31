@@ -1,0 +1,15 @@
+Now I've to create a new flow where I've to export project.
+    update selenium script for that
+        click to sync button
+        click to sync to builder
+        pick one screen 
+        click sync to builder
+        then a new tab will be opened then click to sync/export/deploy
+        then click to export project
+    down load zip file
+    unzip that file
+    the fix the css
+    fix tailwind configs
+    include code in our code base basically move files
+    then update app.jsx file
+
