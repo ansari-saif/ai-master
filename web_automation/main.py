@@ -111,6 +111,11 @@ def automate_locofyai():
         time.sleep(2)
         driver.switch_to.frame(inner0_iframe)
         time.sleep(2)
+        try:
+            driver.execute_script('document.querySelectorAll(".font-medium")[1].click()')
+            time.sleep(1)
+        except Exception as e:
+            print(e)
         driver.execute_script('document.querySelector("._shinyBtn_1lwba_6").click()')
         time.sleep(1)
 
@@ -122,40 +127,23 @@ def automate_locofyai():
         time.sleep(1)
         # sleep 60 seconds
         time.sleep(30)
-        import pyperclip
-        # Loop through all list items and click each one
-        list_items = driver.find_elements(By.XPATH, '/html/body/div[1]/div[2]/div[2]/div[2]/div/div/div[3]/div[2]/div[1]/div[1]/ul/li')
-        count = 0
-        dir_name = "figma_code"
-        for item in list_items[1:]:
-            count += 1
-            print(count)
-            item.click()
-            file_name = item.text
-            print(file_name)
-            driver.find_element(By.XPATH, '//*[@id="root-preview"]/div/div[3]/div[2]/div[1]/div[2]/div').click()
+        driver.find_element(By.XPATH, '//*[@id="root-preview"]/div[1]/div[3]/div[5]/button').click()
+        driver.find_element(By.XPATH, '//*[@id="portal"]/div[6]/div[2]/div/div/div[2]/div[1]/span/span/div/div').click()
+        driver.find_element(By.XPATH, '//*[@id="portal"]/div[6]/div[2]/div/div[2]/div/div[2]/div/div[1]').click()
+        driver.find_element(By.XPATH, '//*[@id="portal"]/div[6]/div[2]/div/div[3]/div/div/span/span/button').click()
+        time.sleep(5)
+        driver.find_element(By.XPATH, '//*[@id="portal"]/div[6]/div[2]/div[2]/div[2]/button').click()
+        driver.switch_to.window(driver.window_handles[2])
+        driver.find_element(By.XPATH, '//*[@id="app"]/div[2]/div/div[3]/button[1]').click()
+        try:
+            driver.find_element(By.XPATH, '//*[@id="portal"]/div[20]/div/div[2]/div/div/img[3]').click()
             time.sleep(1)
-            driver.find_element(By.XPATH, '//*[@id="root-preview"]/div/div[3]/div[2]/div[1]/div[2]/span/span/div/img').click()
-            clipboard_data = pyperclip.paste()
-            with open(f"{dir_name}/{file_name}", 'w') as file:
-                file.write(clipboard_data)
-            time.sleep(1)  
-            
-        list_items_css = driver.find_elements(By.XPATH, '/html/body/div[1]/div[2]/div[2]/div[2]/div/div/div[3]/div[2]/div[2]/div[1]/ul/li')
-        count = 0
-        for item in list_items_css[1:]:
-            count += 1
-            print(count)
-            item.click()
-            file_name = item.text
-            print(file_name)
-            driver.find_element(By.XPATH, '//*[@id="root-preview"]/div/div[3]/div[2]/div[2]/div[2]/div').click()
-            time.sleep(1)
-            driver.find_element(By.XPATH, '//*[@id="root-preview"]/div/div[3]/div[2]/div[2]/div[2]/span/span/div/img').click()
-            clipboard_data = pyperclip.paste()
-            with open(f"{dir_name}/{file_name}", 'w') as file:
-                file.write(clipboard_data)
-            time.sleep(1)
+        except Exception as e:
+            print(e)
+        driver.find_element(By.XPATH, '//*[@id="header"]/div[3]/div/div/button').click()
+        driver.find_element(By.XPATH, '//*[@id="portal"]/div[21]/div/div[3]/div[3]').click()
+        driver.find_element(By.XPATH, '//*[@id="portal"]/div[22]/div/div[2]/div/div/div[2]/div[3]/div[2]/div/div/div/button').click()
+       
 
 
     finally:
