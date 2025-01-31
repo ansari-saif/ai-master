@@ -7,6 +7,8 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from dotenv import load_dotenv
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 def automate_locofyai():
     try:
@@ -127,23 +129,25 @@ def automate_locofyai():
         time.sleep(1)
         # sleep 60 seconds
         time.sleep(30)
-        driver.find_element(By.XPATH, '//*[@id="root-preview"]/div[1]/div[3]/div[5]/button').click()
-        driver.find_element(By.XPATH, '//*[@id="portal"]/div[6]/div[2]/div/div/div[2]/div[1]/span/span/div/div').click()
-        driver.find_element(By.XPATH, '//*[@id="portal"]/div[6]/div[2]/div/div[2]/div/div[2]/div/div[1]').click()
-        driver.find_element(By.XPATH, '//*[@id="portal"]/div[6]/div[2]/div/div[3]/div/div/span/span/button').click()
+        def wait_element(xpath, timeout=10):
+            return WebDriverWait(driver, timeout).until(EC.element_to_be_clickable((By.XPATH, xpath)))
+
+        wait_element('//*[@id="root-preview"]/div[1]/div[3]/div[5]/button').click()
+        wait_element('//*[@id="portal"]/div[6]/div[2]/div/div/div[2]/div[1]/span/span/div/div').click()
+        wait_element('//*[@id="portal"]/div[6]/div[2]/div/div[2]/div/div[2]/div/div[1]').click()
+        wait_element('//*[@id="portal"]/div[6]/div[2]/div/div[3]/div/div/span/span/button').click()
         time.sleep(5)
-        driver.find_element(By.XPATH, '//*[@id="portal"]/div[6]/div[2]/div[2]/div[2]/button').click()
+        wait_element('//*[@id="portal"]/div[6]/div[2]/div[2]/div[2]/button').click()
         driver.switch_to.window(driver.window_handles[2])
-        driver.find_element(By.XPATH, '//*[@id="app"]/div[2]/div/div[3]/button[1]').click()
+        wait_element('//*[@id="app"]/div[2]/div/div[3]/button[1]').click()
         try:
-            driver.find_element(By.XPATH, '//*[@id="portal"]/div[20]/div/div[2]/div/div/img[3]').click()
+            wait_element('//*[@id="portal"]/div[20]/div/div[2]/div/div/img[3]').click()
             time.sleep(1)
         except Exception as e:
             print(e)
-        driver.find_element(By.XPATH, '//*[@id="header"]/div[3]/div/div/button').click()
-        driver.find_element(By.XPATH, '//*[@id="portal"]/div[21]/div/div[3]/div[3]').click()
-        driver.find_element(By.XPATH, '//*[@id="portal"]/div[22]/div/div[2]/div/div/div[2]/div[3]/div[2]/div/div/div/button').click()
-       
+        wait_element('//*[@id="header"]/div[3]/div/div/button').click()
+        wait_element('//*[@id="portal"]/div[21]/div/div[3]/div[3]').click()
+        wait_element('//*[@id="portal"]/div[22]/div/div[2]/div/div/div[2]/div[3]/div[2]/div/div/div/button').click()
 
 
     finally:
