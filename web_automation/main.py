@@ -78,7 +78,7 @@ def automate_locofyai():
         
         # Switch to the new tab
         driver.switch_to.window(driver.window_handles[1])
-        time.sleep(1)
+        time.sleep(5)
 
         # Retrieve Locofy credentials from environment variables
         # Login to locofy
@@ -97,7 +97,7 @@ def automate_locofyai():
 
         # use google login instead
         # Wait for the login to complete
-        time.sleep(5)
+        time.sleep(10)
         driver.switch_to.window(driver.window_handles[0])
         # gen code button
         iframe = driver.find_element(By.ID, 'plugin-iframe-in-modal')
@@ -105,12 +105,12 @@ def automate_locofyai():
 
         f1 = driver.find_element(By.NAME, "Network Plugin Iframe")
         driver.switch_to.frame(f1)
-        time.sleep(1)
+        time.sleep(5)
         # Switch to the inner iframe
         inner0_iframe = driver.find_element(By.ID, "plugin-iframe")
-        time.sleep(1)
+        time.sleep(2)
         driver.switch_to.frame(inner0_iframe)
-        time.sleep(1)
+        time.sleep(2)
         driver.execute_script('document.querySelector("._shinyBtn_1lwba_6").click()')
         time.sleep(1)
 
