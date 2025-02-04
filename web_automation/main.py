@@ -29,7 +29,14 @@ def automate_locofyai():
     try:
         load_dotenv()
 
-        driver = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+        download_path = os.path.join(os.getcwd(), "downloads")
+        if not os.path.exists(download_path):
+            os.makedirs(download_path)
+        prefs = {"download.default_directory": download_path}
+        options.add_experimental_option("prefs", prefs)
+        
+        driver = webdriver.Chrome(options=options)
         driver.maximize_window()
         driver.get("https://www.figma.com/login")
 
@@ -59,14 +66,14 @@ def automate_locofyai():
         driver.get(FIGMA_FILE_URL)
         # check element with text "Search"
         wait_element(driver, By.CLASS_NAME,'gpu-view-content')
-        time.sleep(0.5)
+        time.sleep(1)
         # Step 3: Open the Locofy.ai Plugin
         # Simulate pressing `Alt` + `/` to open the plugin search
         ActionChains(driver).key_down(Keys.COMMAND).send_keys("/").key_up(Keys.COMMAND).perform()
         # Search for Locofy.ai
         search_field = wait_element(driver, By.XPATH, "//input[@placeholder='Search']")
         search_field.send_keys("Locofy.ai")
-        time.sleep(0.5)
+        time.sleep(1)
         # press enter
         search_field.send_keys(Keys.RETURN)
         time.sleep(1.5)
@@ -143,20 +150,28 @@ def automate_locofyai():
         driver.switch_to.window(driver.window_handles[2])
         time.sleep(1)
         wait_element(driver, By.XPATH, '//*[@id="app"]/div[2]/div/div[3]/button[1]').click()
+        time.sleep(1)
 
         try:
-            wait_element(driver, By.XPATH, '//*[@id="portal"]/div[19]/div/div[2]/div/div/img[3]').click()
+            wait_element(driver, By.XPATH, '/html/body/div[2]/div[20]/div/div[2]/div/div/img[3]',timeout=5).click()   
             time.sleep(1)
         except Exception as e:
-            print("Error in click on image x")
+            print("Error in click on image x trying again ...")
             print(e)
+            try:
+                wait_element(driver, By.XPATH, '//*[@id="portal"]/div[19]/div/div[2]/div/div/img[3]',timeout=5).click()
+                time.sleep(1)
+                print('now successfully clicked on image x')
+            except Exception as e:
+                print("Error in click on image x")
+                print(e)
         
         wait_element(driver, By.XPATH, '//*[@id="header"]/div[3]/div/div/button').click()
-        time.sleep(0.5)
+        time.sleep(1)
         wait_element(driver,By.XPATH, "//div[text()='Export Project']").click()
-        time.sleep(0.5)
+        time.sleep(1)
         wait_element(driver, By.XPATH, '//*[@id="portal"]/div[22]/div/div[2]/div/div/div[2]/div[3]/div[2]/div/div/div/button').click()
-        time.sleep(0.5)
+        time.sleep(1)
     except Exception as e:
         print("Error in automate_locofyai")
         print(traceback.format_exc())
