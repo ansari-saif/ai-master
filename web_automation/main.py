@@ -28,7 +28,6 @@ def wait_for_script(driver, script, retries=10):
 def automate_locofyai():
     try:
         load_dotenv()
-
         options = webdriver.ChromeOptions()
         download_path = os.path.join(os.getcwd(), "downloads")
         if not os.path.exists(download_path):
@@ -172,6 +171,8 @@ def automate_locofyai():
         time.sleep(1)
         wait_element(driver, By.XPATH, '//*[@id="portal"]/div[22]/div/div[2]/div/div/div[2]/div[3]/div[2]/div/div/div/button').click()
         time.sleep(1)
+        os.system('python configure-frontend.py')
+        
     except Exception as e:
         print("Error in automate_locofyai")
         print(traceback.format_exc())
