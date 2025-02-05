@@ -1,7 +1,14 @@
-integrate in our code 
-    prompt for fix app.jsx file 
-    poc for add generated file in app.jsx file and place in components
-        fix if get error
-    create a new branch to do further poc   
-        create an new file in the engine 
-            then write code there get code from figma_code folder and place it in appropriate places
+successfully generate code from hsm figma design --done
+learn about locofy ai how it works
+then create a decent figma of hsm with wire connection from importing from dashboard with these module 
+    home page only menu
+    patients
+    doctors
+    appointments you can avoid calendar as of now
+
+
+
+prototype poc done
+dummy figma done 
+dummy hsm figma to code dome
+dummy hsm figma to code with prototype is done
