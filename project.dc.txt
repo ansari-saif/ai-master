@@ -7,19 +7,10 @@ Now I've to create a new flow where I've to export project.
         then a new tab will be opened then click to sync/export/deploy
         then click to export project
     down load zip file
-    -- done yaha tak 
+    
     unzip that file
     the fix the css
     fix tailwind configs
     include code in our code base basically move files
     then update app.jsx file
-
-started @ 22:11
-fixed claimed now issue @ 22:45
-started @ 23:30
-break @ 5 min
-ends @ 02:31
-
-
-
-
+    --- yaha tak ho gaya yani done 
