@@ -170,7 +170,7 @@ def automate_locofyai():
         wait_element(driver,By.XPATH, "//div[text()='Export Project']").click()
         time.sleep(1)
         wait_element(driver, By.XPATH, '//*[@id="portal"]/div[22]/div/div[2]/div/div/div[2]/div[3]/div[2]/div/div/div/button').click()
-        time.sleep(1)
+        time.sleep(2)
         os.system('python configure-frontend.py')
         
     except Exception as e:
