@@ -65,7 +65,7 @@ def automate_locofyai():
         driver.get(FIGMA_FILE_URL)
         # check element with text "Search"
         wait_element(driver, By.CLASS_NAME,'gpu-view-content')
-        time.sleep(1)
+        time.sleep(2)
         # Step 3: Open the Locofy.ai Plugin
         # Simulate pressing `Alt` + `/` to open the plugin search
         ActionChains(driver).key_down(Keys.COMMAND).send_keys("/").key_up(Keys.COMMAND).perform()
