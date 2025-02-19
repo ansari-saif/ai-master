@@ -9,7 +9,8 @@ from openapi_file_generator import generat_openapi_file
 import subprocess 
 
 # Set up your OpenAI API key (Make sure to replace with your actual API key)
-client = OpenAI(api_key="")
+client = OpenAI(api_key=os.getenv("OPENAI_KEY"))
+
 
 
 def get_ai_response(prompt):
@@ -25,7 +26,7 @@ def get_ai_response(prompt):
                     "content": [
                         {
                             "type": "text",
-                            "text": "You're a senior dev.   just generate the code block itself in json format. [\n    {\n        \"module\": \"module it should be in singular one word\",\n        \"fields\": [\n            {\n                \"name\": \"field_name\",\n                \"type\": \"field_type\"\n            }\n        ]\n    }\n]`"
+                            "text": "You're a senior dev.   just generate the code block itself in json format. [{\"module\": \"module it should be in singular one word\", \"fields\": [{\"name\": \"field_name\", \"type\": \"field_type\", \"ref\": \"Optional field  value should be one of module value\"}]}]"
                         }
                     ]
                 },

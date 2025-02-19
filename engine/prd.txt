@@ -1,0 +1,23 @@
+**Objective**: Develop a minimal hospital management system with essential features for managing patients, doctors.
+
+### **Requirements**
+
+1. **Patient Management**
+    - Add, update, view, and delete patient details:
+        - Name
+        - Age
+        - Gender
+        - Contact information
+
+2. **Doctor Management**
+    - Add, update, view, and delete doctor details:
+        - Name
+        - Specialty
+        - Contact information
+
+2. **Doctor Management**
+    - Add, update, view, and delete doctor details:
+        - Patient Name
+        - Doctor Name
+        - DateTime
+

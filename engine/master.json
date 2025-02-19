@@ -1,21 +1,28 @@
 
 [
-    
     {
-        "module": "asset",
+        "module": "patient",
         "fields": [
-            {
-                "name": "asset_name",
-                "type": "string"
-            },
-            {
-                "name": "quantity",
-                "type": "integer"
-            },
-            {
-                "name": "location",
-                "type": "string"
-            }
+            {"name": "name", "type": "string", "ref": null},
+            {"name": "age", "type": "integer", "ref": null},
+            {"name": "gender", "type": "string", "ref": null},
+            {"name": "contact_information", "type": "string", "ref": null}
+        ]
+    },
+    {
+        "module": "doctor",
+        "fields": [
+            {"name": "name", "type": "string", "ref": null},
+            {"name": "specialty", "type": "string", "ref": null},
+            {"name": "contact_information", "type": "string", "ref": null}
+        ]
+    },
+    {
+        "module": "appointment",
+        "fields": [
+            {"name": "patient_name", "type": "string", "ref": "patient"},
+            {"name": "doctor_name", "type": "string", "ref": "doctor"},
+            {"name": "datetime", "type": "datetime", "ref": null}
         ]
     }
 ]
