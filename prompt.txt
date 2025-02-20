@@ -1,0 +1,17 @@
+"requirements": [
+        "Ensure the generated code includes all required imports at the top:",
+        "'from sqlmodel import SQLModel, Field'",
+        "'from typing import Optional'",
+        "'from datetime import datetime'",
+        "'from uuid import UUID'",
+
+        "Ensure patient_id and doctor_id use 'UUID' and have proper foreign keys:",
+        "'patient_id: UUID = Field(foreign_key=\"patient.id\")'",
+        "'doctor_id: UUID = Field(foreign_key=\"doctor.id\")'",
+
+        "Ensure datetime is always typed as 'datetime', not 'str'.",
+        "Ensure 'Optional[datetime] = Field(default=None)' in 'AppointmentUpdate'.",
+        
+        "Before returning the generated code, validate it against these rules.",
+        "If the code does not pass validation, regenerate it until it is correct."
+    ]
