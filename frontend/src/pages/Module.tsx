@@ -1,46 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import TodoItem from '../components/TodoItem';
-import { TodoService, TodoRead } from '../client';
-import AddTodoForm from '@/components/AddTodoForm';
+import ModuleItem from '../components/ModuleItem';
+import { ModuleService, ModuleRead } from '../client';
+import AddModuleForm from '@/components/AddModuleForm';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-const Todo: React.FC = () => {
-  const [todos, setTodo] = useState<TodoRead[]>([]);
-  const getTodo = ()=>{
-    TodoService.listAllTodoApiV1TodoGet()
-      .then(setTodo)
+const Module: React.FC = () => {
+  const [modules, setModule] = useState<ModuleRead[]>([]);
+  const getModule = ()=>{
+    ModuleService.listAllModuleApiV1ModuleGet()
+      .then(setModule)
       .catch(console.error);
   }
   useEffect(() => {
-    getTodo()
+    getModule()
   }, []);
 
-  const handleToggle = (id: number) => {
-    const todo = todos.find((t) => t.id === id);
-    if (!todo) return;
-
-    const updatedTodo = {
-      ...todo,
-      is_completed: !todo.is_completed,
-    };
-
-    TodoService.updateTodoApiV1TodoTodoIdPut({
-      todoId: id,
-      requestBody: updatedTodo,
-    })
-      .then((updated) => {
-        setTodo((prev) =>
-          prev.map((t) => (t.id === id ? updated : t))
-        );
-      })
-      .catch(console.error);
-  };
 
   const handleDelete = (id: number) => {
-    TodoService.deleteTodoApiV1TodoTodoIdDelete({ todoId: id })
+    ModuleService.deleteModuleApiV1ModuleIdDelete({ moduleId: id })
       .then(() => {
-        setTodo((prev) => prev.filter((t) => t.id !== id));
+        setModule((prev) => prev.filter((t) => t.id !== id));
       })
       .catch(console.error);
   };
@@ -57,20 +37,19 @@ const Todo: React.FC = () => {
         className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden"
       >
         <div className="p-6">
-          <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">ToDo</h1>
-          <AddTodoForm onAdd={getTodo} />
+          <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Module</h1>
+          <AddModuleForm onAdd={getModule} />
           <div className="mt-6 space-y-4">
-            {todos.map((todo) => (
+            {modules.map((module) => (
               <motion.div
-                key={todo.id}
+                key={module.id}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3 }}
               >
-                <TodoItem
-                  todo={todo}
-                  onToggle={handleToggle}
+                <ModuleItem
+                  module={module}
                   onDelete={handleDelete}
                 />
               </motion.div>
@@ -82,4 +61,4 @@ const Todo: React.FC = () => {
   );
 };
 
-export default Todo;
+export default Module;

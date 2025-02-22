@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { TodoService } from '../client';
+import { ModuleService } from '../client';
 
-interface AddTodoFormProps {
+interface AddModuleFormProps {
   onAdd: () => void;
 }
 
-const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd }) => {
+const AddModuleForm: React.FC<AddModuleFormProps> = ({ onAdd }) => {
   const [title, setTitle] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim()) return;
 
-    TodoService.createTodoApiV1TodoPost({ requestBody: { title } })
+    ModuleService.createModuleApiV1ModulePost({ requestBody: { title } })
       .then(() => {
         setTitle('');
         onAdd();
@@ -45,4 +45,4 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd }) => {
   );
 };
 
-export default AddTodoForm;
+export default AddModuleForm;

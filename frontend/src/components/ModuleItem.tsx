@@ -1,28 +1,22 @@
 import React from 'react';
-import { TodoRead } from '../client';
+import { ModuleRead } from '../client';
 
-interface TodoItemProps {
-  todo: TodoRead;
-  onToggle: (id: number) => void;
+interface ModuleItemProps {
+  module: ModuleRead;
   onDelete: (id: number) => void;
 }
 
-const TodoItem: React.FC<TodoItemProps> = ({ todo, onToggle, onDelete }) => {
+const ModuleItem: React.FC<ModuleItemProps> = ({ module, onDelete }) => {
   return (
     <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg shadow-sm">
       <div className="flex items-center">
-        <input
-          type="checkbox"
-          checked={todo.is_completed}
-          onChange={() => onToggle(todo.id)}
-          className="mr-3 h-5 w-5 text-blue-500 rounded focus:ring-blue-400"
-        />
-        <span className={`text-lg ${todo.is_completed ? 'line-through text-gray-400' : 'text-gray-700'}`}>
-          {todo.title}
+        
+        <span className={`text-lg text-gray-700`}>
+          {module.title}
         </span>
       </div>
       <button
-        onClick={() => onDelete(todo.id)}
+        onClick={() => onDelete(module.id)}
         className="text-red-500 hover:text-red-700 focus:outline-none transition duration-300 ease-in-out"
       >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -33,4 +27,4 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, onToggle, onDelete }) => {
   );
 };
 
-export default TodoItem;
+export default ModuleItem;

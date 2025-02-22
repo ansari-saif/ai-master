@@ -2,92 +2,92 @@ import type { CancelablePromise } from './core/CancelablePromise';
 import { OpenAPI } from './core/OpenAPI';
 import { request as __request } from './core/request';
 
-import type { TodoCreate, TodoRead, TodoUpdateSchema } from './models';
+import type { ModuleCreate,ModuleRead,ModuleUpdate } from './models';
 
-export type TodoData = {
-	CreateTodoApiV1TodoPost: {
-		requestBody: TodoCreate
+export type ModuleData = {
+        CreateModuleApiV1ModulePost: {
+                    requestBody: ModuleCreate
+                    
+                };
+GetModuleApiV1ModuleIdGet: {
+                    moduleId: number
+                    
+                };
+UpdateModuleApiV1ModuleIdPut: {
+                    moduleId: number
+requestBody: ModuleUpdate
+                    
+                };
+DeleteModuleApiV1ModuleIdDelete: {
+                    moduleId: number
+                    
+                };
+    }
 
-	};
-	GetTodoApiV1TodoTodoIdGet: {
-		todoId: number
-
-	};
-	UpdateTodoApiV1TodoTodoIdPut: {
-		requestBody: TodoUpdateSchema
-		todoId: number
-
-	};
-	DeleteTodoApiV1TodoTodoIdDelete: {
-		todoId: number
-
-	};
-}
-
-export class TodoService {
+export class ModuleService {
 
 	/**
-	 * List All Todo
-	 * @returns TodoRead Successful Response
+	 * List All Module
+	 * @returns ModuleRead Successful Response
 	 * @throws ApiError
 	 */
-	public static listAllTodoApiV1TodoGet(): CancelablePromise<Array<TodoRead>> {
-		return __request(OpenAPI, {
+	public static listAllModuleApiV1ModuleGet(): CancelablePromise<Array<ModuleRead>> {
+				return __request(OpenAPI, {
 			method: 'GET',
-			url: '/api/v1/todo/',
+			url: '/api/v1/module/',
 		});
 	}
 
 	/**
-	 * Create Todo
-	 * @returns TodoRead Successful Response
+	 * Create Module
+	 * @returns ModuleRead Successful Response
 	 * @throws ApiError
 	 */
-	public static createTodoApiV1TodoPost(data: TodoData['CreateTodoApiV1TodoPost']): CancelablePromise<TodoRead> {
+	public static createModuleApiV1ModulePost(data: ModuleData['CreateModuleApiV1ModulePost']): CancelablePromise<ModuleRead> {
 		const {
-			requestBody,
-		} = data;
+requestBody,
+} = data;
 		return __request(OpenAPI, {
 			method: 'POST',
-			url: '/api/v1/todo/',
+			url: '/api/v1/module/',
 			body: requestBody,
 			mediaType: 'application/json',
 		});
 	}
 
 	/**
-	 * Get Todo
-	 * @returns TodoRead Successful Response
+	 * Get a single Module
+	 * @returns ModuleRead Successful Response
 	 * @throws ApiError
 	 */
-	public static getTodoApiV1TodoTodoIdGet(data: TodoData['GetTodoApiV1TodoTodoIdGet']): CancelablePromise<TodoRead> {
+	public static getModuleApiV1ModuleIdGet(data: ModuleData['GetModuleApiV1ModuleIdGet']): CancelablePromise<ModuleRead> {
 		const {
-			todoId,
-		} = data;
+moduleId,
+} = data;
 		return __request(OpenAPI, {
 			method: 'GET',
-			url: '/api/v1/todo/{todo_id}',
+			url: '/api/v1/module/{module_id}',
 			path: {
-				todo_id: todoId
+				module_id: moduleId
 			},
 		});
 	}
 
 	/**
-	 * Update Todo
-	 * @returns TodoRead Successful Response
+	 * Update a Module
+	 * @returns ModuleRead Successful Response
 	 * @throws ApiError
 	 */
-	public static updateTodoApiV1TodoTodoIdPut(data: TodoData['UpdateTodoApiV1TodoTodoIdPut']): CancelablePromise<TodoRead> {
+	public static updateModuleApiV1ModuleIdPut(data: ModuleData['UpdateModuleApiV1ModuleIdPut']): CancelablePromise<ModuleRead> {
 		const {
-			todoId,
-			requestBody,
-		} = data;
+moduleId,
+requestBody,
+} = data;
 		return __request(OpenAPI, {
 			method: 'PUT',
-			url: '/api/v1/todo/{todo_id}',
+			url: '/api/v1/module/{module_id}',
 			path: {
-				todo_id: todoId
+				module_id: moduleId
 			},
 			body: requestBody,
 			mediaType: 'application/json',
@@ -95,19 +95,19 @@ export class TodoService {
 	}
 
 	/**
-	 * Delete Todo
-	 * @returns unknown Successful Response
+	 * Delete a Module
+	 * @returns void No Content
 	 * @throws ApiError
 	 */
-	public static deleteTodoApiV1TodoTodoIdDelete(data: TodoData['DeleteTodoApiV1TodoTodoIdDelete']): CancelablePromise<Record<string, unknown>> {
+	public static deleteModuleApiV1ModuleIdDelete(data: ModuleData['DeleteModuleApiV1ModuleIdDelete']): CancelablePromise<void> {
 		const {
-			todoId,
-		} = data;
+moduleId,
+} = data;
 		return __request(OpenAPI, {
 			method: 'DELETE',
-			url: '/api/v1/todo/{todo_id}',
+			url: '/api/v1/module/{module_id}',
 			path: {
-				todo_id: todoId
+				module_id: moduleId
 			},
 		});
 	}
