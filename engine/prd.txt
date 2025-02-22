@@ -13,11 +13,4 @@
     - Add, update, view, and delete doctor details:
         - Name
         - Specialty
-        - Contact information
-
-2. **Doctor Management**
-    - Add, update, view, and delete doctor details:
-        - Patient Name
-        - Doctor Name
-        - DateTime
-
+        - Phone Number
