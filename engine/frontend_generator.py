@@ -20,17 +20,17 @@ class FrontendGenerator:
         json_structure = json_item["fields"]
         """Function to get a response from the AI."""
         try:
-            TodoItem = 'frontend/src/components/TodoItem.tsx'
-            with open(TodoItem, 'r') as file:
-                TodoItemContent = file.read()
+            ModuleItem = 'frontend/src/components/ModuleItem.tsx'
+            with open(ModuleItem, 'r') as file:
+                ModuleItemContent = file.read()
                 
-            AddTodoFormContent = 'frontend/src/components/AddTodoForm.tsx'
-            with open(AddTodoFormContent, 'r') as file:
-                AddTodoFormContentContent = file.read()
+            AddModuleFormContent = 'frontend/src/components/AddModuleForm.tsx'
+            with open(AddModuleFormContent, 'r') as file:
+                AddModuleFormContentContent = file.read()
                 
-            TodoContent = 'frontend/src/pages/Todo.tsx'
-            with open(TodoContent, 'r') as file:
-                TodoContent = file.read()
+            ModuleContent = 'frontend/src/pages/Module.tsx'
+            with open(ModuleContent, 'r') as file:
+                ModuleContent = file.read()
                 
                 
             response = self.client.chat.completions.create(
@@ -56,10 +56,10 @@ class FrontendGenerator:
                                     f"For this data json : ```{json_structure}```"
                                     f"Use these methods of {module.capitalize()}Service\n"
                                     f"{services_list(module)}\n"
-                                    "Here is example file for your reference for `todo` module\n"
-                                    f"frontend/src/pages/Todo.tsx```{TodoContent}```\n"
-                                    f"frontend/src/components/TodoItem.tsx```{TodoItemContent}```\n"
-                                    f"frontend/src/components/AddTodoForm.tsx```{AddTodoFormContentContent}```\n"
+                                    "Here is example file for your reference for `module` module\n"
+                                    f"frontend/src/pages/Module.tsx```{ModuleContent}```\n"
+                                    f"frontend/src/components/ModuleItem.tsx```{ModuleItemContent}```\n"
+                                    f"frontend/src/components/AddModuleForm.tsx```{AddModuleFormContentContent}```\n"
                                     
                                     )
 
