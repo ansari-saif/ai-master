@@ -1,10 +1,11 @@
 import React from "react";
 import { ModuleRead } from "../client";
 
+
 interface ModuleItemProps {
   module: ModuleRead;
   onDelete: (id: number) => void;
-  onEdit: (id: number) => void;
+  onEdit: (saveModule: ModuleRead) => void;
 }
 
 const ModuleItem: React.FC<ModuleItemProps> = ({
@@ -36,7 +37,7 @@ const ModuleItem: React.FC<ModuleItemProps> = ({
         </svg>
       </button>
       <button
-        onClick={() => onEdit(module.id)}
+        onClick={() => onEdit(module)}
         className="text-blue-500 hover:text-blue-700 focus:outline-none transition duration-300 ease-in-out m-1 p-1"
       >
         <svg

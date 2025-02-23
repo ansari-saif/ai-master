@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Module: React.FC = () => {
   const [modules, setModule] = useState<ModuleRead[]>([]);
+  const [editModule, setEditModule] = useState<ModuleRead | object>({})
   const getModule = ()=>{
     ModuleService.listAllModuleApiV1ModuleGet()
       .then(setModule)
@@ -24,12 +25,14 @@ const Module: React.FC = () => {
       })
       .catch(console.error);
   };
-  const handleEdit = (id: number) => {
-    ModuleService.deleteModuleApiV1ModuleIdDelete({ moduleId: id })
-      .then(() => {
-        setModule((prev) => prev.filter((t) => t.id !== id));
-      })
-      .catch(console.error);
+  const handleEdit = (saveModule: ModuleRead) => {
+    // ModuleService.getModuleApiV1ModuleIdGet({ moduleId: id })
+    //   .then((data) => {
+    //     console.log({data});
+        
+    //   })
+    //   .catch(console.error);
+    setEditModule(saveModule)
   };
 
   return (
@@ -45,7 +48,7 @@ const Module: React.FC = () => {
       >
         <div className="p-6">
           <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Module</h1>
-          <SaveModuleForm onSave={getModule} />
+          <SaveModuleForm onSave={getModule} editModule={editModule} />
           <div className="mt-6 space-y-4">
             {modules.map((module) => (
               <motion.div

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { ModuleService } from '../client';
+import { ModuleRead, ModuleService } from '../client';
 
 interface SaveModuleFormProps {
   onSave: () => void;
+  editModule : ModuleRead | object;
 }
 
-const SaveModuleForm: React.FC<SaveModuleFormProps> = ({ onSave }) => {
-  const [title, setTitle] = useState('');
+const SaveModuleForm: React.FC<SaveModuleFormProps> = ({ onSave, editModule }) => {
+  // fix this add title and description
+  const [title, setTitle] = useState((editModule as ModuleRead)?.title || '');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
