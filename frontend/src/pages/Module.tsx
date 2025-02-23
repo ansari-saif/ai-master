@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ModuleItem from '../components/ModuleItem';
 import { ModuleService, ModuleRead } from '../client';
-import AddModuleForm from '@/components/AddModuleForm';
+import SaveModuleForm from '@/components/SaveModuleForm';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -24,6 +24,13 @@ const Module: React.FC = () => {
       })
       .catch(console.error);
   };
+  const handleEdit = (id: number) => {
+    ModuleService.deleteModuleApiV1ModuleIdDelete({ moduleId: id })
+      .then(() => {
+        setModule((prev) => prev.filter((t) => t.id !== id));
+      })
+      .catch(console.error);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-100 to-purple-100 p-8">
@@ -38,7 +45,7 @@ const Module: React.FC = () => {
       >
         <div className="p-6">
           <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Module</h1>
-          <AddModuleForm onAdd={getModule} />
+          <SaveModuleForm onSave={getModule} />
           <div className="mt-6 space-y-4">
             {modules.map((module) => (
               <motion.div
@@ -51,6 +58,7 @@ const Module: React.FC = () => {
                 <ModuleItem
                   module={module}
                   onDelete={handleDelete}
+                  onEdit={handleEdit}
                 />
               </motion.div>
             ))}

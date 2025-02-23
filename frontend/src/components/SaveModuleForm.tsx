@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { ModuleService } from '../client';
 
-interface AddModuleFormProps {
-  onAdd: () => void;
+interface SaveModuleFormProps {
+  onSave: () => void;
 }
 
-const AddModuleForm: React.FC<AddModuleFormProps> = ({ onAdd }) => {
+const SaveModuleForm: React.FC<SaveModuleFormProps> = ({ onSave }) => {
   const [title, setTitle] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -15,7 +15,7 @@ const AddModuleForm: React.FC<AddModuleFormProps> = ({ onAdd }) => {
     ModuleService.createModuleApiV1ModulePost({ requestBody: { title } })
       .then(() => {
         setTitle('');
-        onAdd();
+        onSave();
       })
       .catch(console.error);
   };
@@ -23,13 +23,13 @@ const AddModuleForm: React.FC<AddModuleFormProps> = ({ onAdd }) => {
   return (
     <form onSubmit={handleSubmit} className="mt-4">
       <div className="flex flex-col pd-5 m-5 space-y-4">
-        <label htmlFor="todo-title" className="text-gray-700">Title</label>
+        <label htmlFor="module-title" className="text-gray-700">Title</label>
         <input
-          id="todo-title"
+          id="module-title"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="Add a new todo..."
+          placeholder="Title"
           className="w-full px-4 py-2 text-gray-700 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300 ease-in-out"
         />
       </div>
@@ -38,11 +38,11 @@ const AddModuleForm: React.FC<AddModuleFormProps> = ({ onAdd }) => {
           type="submit"
           className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300 ease-in-out"
         >
-          Add
+          Save
         </button>
       </div>
     </form>
   );
 };
 
-export default AddModuleForm;
+export default SaveModuleForm;
