@@ -8,6 +8,7 @@ export type ValidationError = {
 
 export type ModuleCreate = {
 	title: string;
+	description: string;
 };
 
 
@@ -15,11 +16,13 @@ export type ModuleCreate = {
 export type ModuleRead = {
 	id: number;
 	title: string;
+	description: string;
 };
 
 
 
 export type ModuleUpdate = {
 	title?: string;
+	description?: string;
 };
 

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ModuleItem from '../components/ModuleItem';
-import { ModuleService, ModuleRead } from '../client';
+import { ModuleService, ModuleRead, ModuleCreate } from '../client';
 import SaveModuleForm from '@/components/SaveModuleForm';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const Module: React.FC = () => {
   const [modules, setModule] = useState<ModuleRead[]>([]);
-  const [editModule, setEditModule] = useState<ModuleRead | object>({})
+  const [editModule, setEditModule] = useState<ModuleCreate>({title:"",description:""})
   const getModule = ()=>{
     ModuleService.listAllModuleApiV1ModuleGet()
       .then(setModule)

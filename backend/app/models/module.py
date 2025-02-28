@@ -15,4 +15,3 @@ class Module(ModuleBase, table=True):
 class ModuleUpdate(ModuleBase):
     title: Optional[str] = None
     description: Optional[str] = None
-    is_completed: Optional[bool] = None

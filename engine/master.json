@@ -1,9 +1,41 @@
 
 [
     {
-        "module": "module",
+        "module": "patient",
         "fields": [
-            {"name": "title", "type": "string", "ref": null}
+            {
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "age",
+                "type": "integer"
+            },
+            {
+                "name": "gender",
+                "type": "string"
+            },
+            {
+                "name": "contact_information",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "module": "doctor",
+        "fields": [
+            {
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "specialty",
+                "type": "string"
+            },
+            {
+                "name": "contact_information",
+                "type": "string"
+            }
         ]
     }
 ]
